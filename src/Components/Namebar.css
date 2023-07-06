@@ -1,0 +1,11 @@
+.insname{
+    background-color: black;
+    color: white;
+    font-size: 55px;
+    font-weight: bold;
+    text-indent: 15px;
+    align-items: center;
+    display: flex;
+    justify-content: left;
+    
+}

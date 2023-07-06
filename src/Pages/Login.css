@@ -1,0 +1,143 @@
+@media (max-width: 600px) {
+  .border {
+    /* Adjust the width and height to fit smaller screens */
+    width: 90%;
+    height: auto;
+  }
+
+  .input {
+    /* Adjust the width of the input fields for smaller screens */
+    width: 90%;
+  }
+}
+
+/* For screen widths up to 768px */
+@media (max-width: 768px) {
+  .border {
+    /* Adjust the width and height to fit smaller screens */
+    width: 80%;
+    height: auto;
+  }
+
+  .input {
+    /* Adjust the width of the input fields for smaller screens */
+    width: 80%;
+  }
+}
+
+/* For screen widths up to 992px */
+@media (max-width: 992px) {
+  .border {
+    /* Adjust the width and height to fit smaller screens */
+    width: 70%;
+    height: auto;
+  }
+
+  .input {
+    /* Adjust the width of the input fields for smaller screens */
+    width: 70%;
+  }
+}
+
+
+.background{
+    background-image:url("https://americancollege.lk/wp-content/uploads/2021/01/Web-Page-Image-1.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+    width: auto; 
+    height: 91vh;
+    margin-top: auto; 
+    opacity:70%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.border{
+
+    background: white;
+    width: 400px;
+    height: 450px;
+    border-radius: 35px;
+    border: 3px solid blue;
+    text-align: center;
+    font-size: 25px;
+    opacity: 80%; 
+}
+
+.credentials{
+    text-align: left;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;   
+}
+
+
+.login-section {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+
+
+.input {
+    background-color: bisque;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    height: 30px;
+    border-radius: 10px;
+    border: 3px solid blue;
+    width: 300px;
+  }
+  
+  .center {
+    text-align: center;
+  }
+
+  .submit-button{
+    background-color: blue; /* Change the button background color */
+    color: white; /* Change the button text color */
+    font-size: 20px; /* Change the button font size */
+    padding: 10px 20px; /* Adjust the button padding */
+    border-radius: 10px; /* Adjust the button border radius */
+    margin-top: 30px;
+    width: 200px;
+    height: 35px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .forgot-password{
+    margin-top: 10px;
+    margin-left: -170px;
+  }
+
+ a{
+    font-size: 15px;
+    font-family:monospace;
+    font-weight: bold;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

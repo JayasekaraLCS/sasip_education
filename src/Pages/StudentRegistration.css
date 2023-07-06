@@ -1,0 +1,84 @@
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f1f1;
+    margin-top: auto;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  form {
+    
+    background-color:white;
+    padding: 30px;
+    width: 650px;
+    border-radius: 20px;
+    height: 660px; /* Set your desired fixed height */
+    overflow-y: auto; /* Add scrollbar when content exceeds the height */
+    border-color: black;
+    
+  }
+  
+  h2, h3 {
+    text-align: center;
+  }
+
+  h2{
+    margin-top: auto;
+  }
+  
+  hr {
+    border: none;
+    border-top: 1px solid black;
+    margin: 20px 0;
+  }
+  
+  .form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    
+    
+  }
+  
+  .form-row label {
+    flex-basis: 200px;
+  }
+  
+  .form-row input,
+  .form-row select {
+    flex-grow: 1;
+    background-color: navajowhite;
+    border-radius: 3px;
+    
+  }
+   
+  .checkbox-group {
+      padding-left: 0;
+      font-weight: normal;
+    }
+    
+  .checkbox-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  
+
+  
+  button[type="submit"],
+  button[type="reset"] {
+    
+    margin: 10px;
+    width: 100px;
+    font-weight: bold;
+    text-align: center;
+    background-color: darkblue;
+    color: white;
+    border-radius: 5px;
+    
+    
+  }
