@@ -7,9 +7,11 @@ import AdminPanel from './Pages/AdminPanel';
 import Status from './Components/Status';
 import StudentRegistration from './Pages/StudentRegistration';
 import PageSetup from './Components/PageSetup';
-import Example from './Pages/Example';
 import TeacherRegistration from './Pages/TeacherRegistration';
 import MarkAttendance from './Pages/MarkAttendance';
+import Example from './Pages/Example';
+
+
 
 
 
@@ -23,9 +25,10 @@ function App() {
       {/* <Status/> */}
       {/* <StudentRegistration/> */}
       {/* <PageSetup/> */}
-      {/* <Example/> */}
       {/* <TeacherRegistration/> */}
       {/* <MarkAttendance/> */}
+      {/* <Example/> */}
+      
     </div>
   );
 }
