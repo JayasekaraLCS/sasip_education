@@ -10,6 +10,7 @@
     border-radius: 10px;
     flex: 1; /* Take up available width */
     width: max-content;
+    height: max-content;
   }
   
   .form-section label {

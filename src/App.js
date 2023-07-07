@@ -21,12 +21,12 @@ function App() {
       {/* <Navbar/> */}
       {/* <Login/> */}
       {/* <Namebar/> */}
-      <AdminPanel/>
+      {/* <AdminPanel/> */}
       {/* <Status/> */}
       {/* <StudentRegistration/> */}
       {/* <PageSetup/> */}
       {/* <TeacherRegistration/> */}
-      {/* <MarkAttendance/> */}
+      <MarkAttendance/>
       {/* <Example/> */}
       
     </div>
