@@ -10,6 +10,7 @@ import PageSetup from './Components/PageSetup';
 import TeacherRegistration from './Pages/TeacherRegistration';
 import MarkAttendance from './Pages/MarkAttendance';
 import Example from './Pages/Example';
+import MakePayments from './Pages/MakePayments';
 
 
 
@@ -28,6 +29,7 @@ function App() {
       {/* <TeacherRegistration/> */}
       {/* <MarkAttendance/> */}
       {/* <Example/> */}
+      <MakePayments/>
       
     </div>
   );
