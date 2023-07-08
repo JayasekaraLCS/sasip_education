@@ -29,7 +29,7 @@ function App() {
       {/* <TeacherRegistration/> */}
       {/* <MarkAttendance/> */}
       {/* <Example/> */}
-      <MakePayments/>
+      {/* <MakePayments/> */}
       
     </div>
   );

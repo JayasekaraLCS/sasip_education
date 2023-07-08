@@ -55,7 +55,9 @@ export default function MarkAttendance() {
                 <button type="submit">Place Attendance</button>
                 <button type="reset">Reset</button>
             </div>
+
             </div> 
+            
             </td>
 
             <td>
