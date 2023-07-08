@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       {/* <Navbar/> */}
       {/* <Login/> */}
-      <Namebar/>
+      {/* <Namebar/> */}
       {/* <AdminPanel/> */}
       {/* <Status/> */}
       {/* <StudentRegistration/> */}
