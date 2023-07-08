@@ -26,7 +26,7 @@ function App() {
       {/* <StudentRegistration/> */}
       {/* <PageSetup/> */}
       {/* <TeacherRegistration/> */}
-      <MarkAttendance/>
+      {/* <MarkAttendance/> */}
       {/* <Example/> */}
       
     </div>

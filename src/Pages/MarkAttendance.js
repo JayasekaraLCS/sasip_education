@@ -62,45 +62,18 @@ export default function MarkAttendance() {
             <div className='displayresults'>
               <h2>Attendance Details</h2>
 
+              <div className='table-container'></div> 
+              {/* to generate a table */}
+
     
-            <div class="scrollable-section"> 
-                <table>
-
-                  <tbody>
-                    <tr>
-                      <td>001</td>
-                      <td>Grade 8</td>
-                      <td>13:23</td>
-                      <td>7/6/2023</td>
-                      <td>Mathematics - Roshan Sir</td>
-                    </tr>
-
-                    <tr>
-                      <td>002</td>
-                      <td>Grade 9</td>
-                      <td>13:23</td>
-                      <td>7/6/2023</td>
-                      <td>Mathematics - Roshan Sir</td>
-                    </tr>
-
-                    <tr>
-                      <td>003</td>
-                      <td>Grade 10</td>
-                      <td>13:23</td>
-                      <td>7/6/2023</td>
-                      <td>Mathematics - Roshan Sir</td>
-                    </tr>
 
 
-                  </tbody>
-                </table>
             </div>
-
-    </div>
             </td>
+
             </tr>
           </table>
-</div>
+    </div>
 
 
 </div>
