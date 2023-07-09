@@ -13,6 +13,7 @@ import Example from './Pages/Example';
 import MakePayments from './Pages/MakePayments';
 import CheckPayments from './Pages/CheckPayments';
 import CheckAttendance from './Pages/CheckAttendance';
+import GenerateReports from './Pages/GenerateReports';
 
 
 
@@ -34,6 +35,7 @@ function App() {
       {/* <MakePayments/> */}
       {/* <CheckPayments/> */}
       {/* <CheckAttendance/> */}
+      <GenerateReports/>
       
     </div>
   );
