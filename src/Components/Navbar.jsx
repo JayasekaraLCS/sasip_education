@@ -35,12 +35,7 @@ export default function Navbar() {
                     </div>
                 </li>
 
-                <li class="dropdown"><a href="#" class="dropbtn">Reports</a>
-                    <div class="dropdown-content">
-                        <a href="#">Attendance Report</a>
-                        <a href="#">Results Report</a>
-                    </div>
-                </li>
+                <li class="dropdown"><a href="#" class="dropbtn">Reports</a></li>
 
                 <li class ="dropdown"><a href="#" class="dropbtn">Sign Out</a></li>
 

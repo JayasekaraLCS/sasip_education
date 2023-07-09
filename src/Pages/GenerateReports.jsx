@@ -42,7 +42,7 @@ export default function GenerateReports() {
               </div>
 
             <div class="form-section">
-              <h2>Obtain Result Reports</h2>
+              <h2>Obtain Results Reports</h2>
               <label for="grade">Grade:</label>
               <select id="grade" name="grade">
                 <option value="6">Grade 6</option>
