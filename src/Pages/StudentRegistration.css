@@ -66,9 +66,7 @@
     margin-bottom: 5px;
   }
 
-  
 
-  
   button[type="submit"],
   button[type="reset"] {
     
@@ -76,7 +74,7 @@
     width: 100px;
     font-weight: bold;
     text-align: center;
-    background-color: darkblue;
+    background-color:darkblue;
     color: white;
     border-radius: 5px;
     

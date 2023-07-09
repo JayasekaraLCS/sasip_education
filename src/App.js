@@ -12,6 +12,7 @@ import MarkAttendance from './Pages/MarkAttendance';
 import Example from './Pages/Example';
 import MakePayments from './Pages/MakePayments';
 import CheckPayments from './Pages/CheckPayments';
+import CheckAttendance from './Pages/CheckAttendance';
 
 
 
@@ -31,7 +32,8 @@ function App() {
       {/* <MarkAttendance/> */}
       {/* <Example/> */}
       {/* <MakePayments/> */}
-      <CheckPayments/>
+      {/* <CheckPayments/> */}
+      {/* <CheckAttendance/> */}
       
     </div>
   );

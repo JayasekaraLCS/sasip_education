@@ -23,6 +23,7 @@ export default function MarkAttendance() {
 
               <td>
             <div class="form-section">
+              
             <h2>Mark Student Attendance</h2>
             <label for="student-id">Student ID:</label>
             <input type="text" id="student-id" name="student-id"/>
@@ -51,7 +52,7 @@ export default function MarkAttendance() {
                 <option value="C">Class C</option>
             </select>
             
-            <div class="buttons">
+            <div class="button-container">
                 <button type="submit">Place Attendance</button>
                 <button type="reset">Reset</button>
             </div>

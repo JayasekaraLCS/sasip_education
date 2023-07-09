@@ -4,31 +4,6 @@
     margin-top: 50px;
 }
 
-.form-section {
-    background-color: #f1f1f1;
-    padding: 20px;
-    border-radius: 10px;
-    flex: 1; /* Take up available width */
-    width: max-content;
-    height: 500px;
-    
-  }
-  
-  .form-section label {
-    display: block;
-    margin-bottom: 10px;
-    text-align: left;
-  }
-  
-  .form-section input[type="text"],
-  .form-section select {
-    width: 100%;
-    padding: 5px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    background-color: navajowhite;
-  }
-  
   .form-section .image-preview {
     text-align: right;
   }
@@ -38,24 +13,7 @@
     max-height: 200px;
   }
   
-  .form-section .buttons {
-    display: flex;
-    justify-content: flex-end;
-  }
   
-  .table-section {
-    background-color: #f1f1f1;
-    padding: 20px;
-    border-radius: 10px;
-    flex: 0; /* Maintain original width */
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-
 
   .displayresults{
     text-align: center;

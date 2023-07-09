@@ -29,7 +29,7 @@ export default function CheckPayments() {
                 <label for="student-id">Student ID:</label>
                 <input type="text" id="student-id" name="student-id"/>
 
-                <div class="buttons">
+                <div class="button-container">
                     <button type="submit">View Payments</button>
                     <button type="reset">Reset</button>
                 </div>
