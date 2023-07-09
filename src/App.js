@@ -11,6 +11,7 @@ import TeacherRegistration from './Pages/TeacherRegistration';
 import MarkAttendance from './Pages/MarkAttendance';
 import Example from './Pages/Example';
 import MakePayments from './Pages/MakePayments';
+import CheckPayments from './Pages/CheckPayments';
 
 
 
@@ -30,6 +31,7 @@ function App() {
       {/* <MarkAttendance/> */}
       {/* <Example/> */}
       {/* <MakePayments/> */}
+      <CheckPayments/>
       
     </div>
   );
