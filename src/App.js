@@ -36,7 +36,7 @@ function App() {
       {/* <MakePayments/> */}
       {/* <CheckPayments/> */}
       {/* <CheckAttendance/> */}
-      <GenerateReports/>
+      {/* <GenerateReports/> */}
       {/* <CheckResults/> */}
       
     </div>
