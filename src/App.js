@@ -21,6 +21,7 @@ import AddResults from './Pages/AddResults';
 
 
 
+
 function App() {
   return (
     <div className="App">
@@ -39,7 +40,7 @@ function App() {
       {/* <CheckAttendance/> */}
       {/* <GenerateReports/> */}
       {/* <CheckResults/> */}
-      <AddResults/>
+      {/* <AddResults/> */}
       
     </div>
   );

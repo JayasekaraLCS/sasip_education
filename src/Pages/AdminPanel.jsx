@@ -41,16 +41,16 @@ export default function AdminPanel() {
 
                           <tr>
                             <td>
-                              <button type="button" className="updatestudent-button">
-                                Update Student
+                              <button type="button" className="viewstudent-button">
+                                View Student
                               </button>
                             </td>
                           </tr>
 
                           <tr>
                             <td>
-                              <button type="button" className="removestudent-button">
-                                Remove Student
+                              <button type="button" className="remandupstudent-button">
+                                Remove or Update Student
                               </button>
                             </td>
                           </tr>
@@ -78,16 +78,16 @@ export default function AdminPanel() {
 
                           <tr>
                             <td>
-                              <button type="button" className="updateteacher-button">
-                                Update Teacher
+                              <button type="button" className="viewteacher-button">
+                                View Teacher
                               </button>
                             </td>
                           </tr>
 
                           <tr>
                             <td>
-                              <button type="button" className="removeteacher-button">
-                                Remove Teacher
+                              <button type="button" className="remandupteacher-button">
+                                Remove and Update Teacher
                               </button>
                             </td>
                           </tr>

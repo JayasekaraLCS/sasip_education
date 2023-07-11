@@ -70,11 +70,11 @@
   }
   
   .registerstudent-button,
-  .updatestudent-button,
-  .removestudent-button,
+  .viewstudent-button,
+  .remandupstudent-button,
   .registerteacher-button,
-  .updateteacher-button,
-  .removeteacher-button {
+  .remandupteacher-button,
+  .viewteacher-button {
     /* Existing styles */
     display: block;
     width: 250px;
