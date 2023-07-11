@@ -1,3 +1,4 @@
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import Login from './Pages/Login';
@@ -16,6 +17,8 @@ import CheckAttendance from './Pages/CheckAttendance';
 import GenerateReports from './Pages/GenerateReports';
 import CheckResults from './Pages/CheckResults';
 import AddResults from './Pages/AddResults';
+import NoPage from './Pages/NoPage';
+
 
 
 
@@ -24,23 +27,51 @@ import AddResults from './Pages/AddResults';
 
 function App() {
   return (
-    <div className="App">
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route index element ={<Login/>} />
+          <Route path ='/AdminPanel' element={<AdminPanel/>} />
+          <Route path = '/StudentRegistration' element={<StudentRegistration/>} />
+          <Route path = '/TeacherRegistration' element={<TeacherRegistration/>} />
+          <Route path = '/MarkAttendance' element ={<MarkAttendance/>}  />
+          <Route path = '/MakePayments' element={<MakePayments/>} />
+          <Route path = '/CheckPayments' element={<CheckPayments/>}  />
+          <Route path = '/CheckAttendance' element={<CheckAttendance/>} />
+          <Route path = '/GenerateReports' element={<GenerateReports/>}  />
+          <Route path = '/CheckResults' element ={<CheckResults/>}  />
+          <Route path = '/AddResults' element ={<AddResults/>}  />
+          <Route path ='*' element ={<NoPage/>}  />
+          
+
+        </Routes>
+      </BrowserRouter>
+
+
+
+
+
+
+
+
+
+
+
+
       {/* <Navbar/> */}
-      {/* <Login/> */}
       {/* <Namebar/> */}
-      {/* <AdminPanel/> */}
       {/* <Status/> */}
-      {/* <StudentRegistration/> */}
       {/* <PageSetup/> */}
-      {/* <TeacherRegistration/> */}
-      {/* <MarkAttendance/> */}
       {/* <Example/> */}
-      {/* <MakePayments/> */}
-      {/* <CheckPayments/> */}
-      {/* <CheckAttendance/> */}
-      {/* <GenerateReports/> */}
-      {/* <CheckResults/> */}
+      <NoPage/>
+
+     
+     
+      
+      
+     
       {/* <AddResults/> */}
+      
       
     </div>
   );
