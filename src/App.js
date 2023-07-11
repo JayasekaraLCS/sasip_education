@@ -15,6 +15,7 @@ import CheckPayments from './Pages/CheckPayments';
 import CheckAttendance from './Pages/CheckAttendance';
 import GenerateReports from './Pages/GenerateReports';
 import CheckResults from './Pages/CheckResults';
+import AddResults from './Pages/AddResults';
 
 
 
@@ -38,6 +39,7 @@ function App() {
       {/* <CheckAttendance/> */}
       {/* <GenerateReports/> */}
       {/* <CheckResults/> */}
+      <AddResults/>
       
     </div>
   );
