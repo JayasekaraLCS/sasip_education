@@ -30,7 +30,7 @@ export default function Navbar() {
                     </div>
                 </li>
 
-                <li class="dropdown"><Link to="/" class="dropbtn">Reports</Link></li>
+                <li class="dropdown"><Link to="/GenerateReports" class="dropbtn">Reports</Link></li>
 
                 <li class ="dropdown"><Link to="/" class="dropbtn">Sign Out</Link></li>
 

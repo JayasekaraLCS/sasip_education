@@ -18,6 +18,9 @@ import GenerateReports from './Pages/GenerateReports';
 import CheckResults from './Pages/CheckResults';
 import AddResults from './Pages/AddResults';
 import NoPage from './Pages/NoPage';
+import StudentLogin from './Pages/StudentLogin';
+import TeacherLogin from './Pages/TeacherLogin';
+
 
 
 
@@ -42,9 +45,12 @@ function App() {
           <Route path = '/CheckResults' element ={<CheckResults/>}  />
           <Route path = '/AddResults' element ={<AddResults/>}  />
           <Route path ='*' element ={<NoPage/>}  />
+          <Route path = '/StudentLogin' element ={<StudentLogin/>}  />
+          <Route path = '/TeacherLogin' element ={<TeacherLogin/>} />
           
 
         </Routes>
+
       </BrowserRouter>
 
 
@@ -57,13 +63,13 @@ function App() {
 
 
 
-
+     
       {/* <Navbar/> */}
       {/* <Namebar/> */}
       {/* <Status/> */}
       {/* <PageSetup/> */}
       {/* <Example/> */}
-      <NoPage/>
+      {/* <NoPage/> */}
 
      
      

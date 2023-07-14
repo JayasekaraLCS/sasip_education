@@ -53,8 +53,8 @@ export default function StudentRegistration() {
 
             <div class="form-row">
             <label for="grade">Grade:</label>
-            <select id="grade" name="grade">
-                <option value="default">Select the grade</option>
+            <select id="grade" name="grade" placeholder='Select the grade'>
+                
                 <option value="6">Grade 6</option>
                 <option value="7">Grade 7</option>
                 <option value="8">Grade 8</option>

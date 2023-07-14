@@ -3,6 +3,7 @@ import Namebar from '../Components/Namebar'
 import Navbar from '../Components/Navbar'
 import './AdminPanel.css'
 import Status from '../Components/Status'
+import { Link } from 'react-router-dom'
 
 
 export default function AdminPanel() {
@@ -33,9 +34,11 @@ export default function AdminPanel() {
                         <tbody>
                           <tr>
                             <td>
+                              <Link to ="/StudentRegistration">
                               <button type="button" className="registerstudent-button">
                                 Student Registration
                               </button>
+                              </Link>
                             </td>
                           </tr>
 
@@ -70,9 +73,11 @@ export default function AdminPanel() {
                         <tbody>
                           <tr>
                             <td>
+                              <Link to ="/TeacherRegistration">
                               <button type="button" className="registerteacher-button">
                                 Teacher Registration
                               </button>
+                              </Link>
                             </td>
                           </tr>
 
@@ -87,7 +92,7 @@ export default function AdminPanel() {
                           <tr>
                             <td>
                               <button type="button" className="remandupteacher-button">
-                                Remove and Update Teacher
+                                Remove or Update Teacher
                               </button>
                             </td>
                           </tr>
