@@ -67,8 +67,7 @@
   }
 
 
-  button[type="submit"],
-  button[type="reset"] {
+  button{
     
     margin: 10px;
     width: 100px;

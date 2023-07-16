@@ -8,31 +8,31 @@ export default function Navbar() {
         <nav>
             <ul>
 
-                <li class ="dropdown"><Link to ="/AdminPanel" class="dropbtn">Payments</Link>
-                    <div class="dropdown-content">
+                <li className ="dropdown"><Link to ="/AdminPanel" className="dropbtn">Payments</Link>
+                    <div className="dropdown-content">
                         <Link to="/MakePayments">Make Payments</Link>
                         <Link to="/CheckPayments">Check Payments</Link>
                     </div>
                 </li>
 
-                <li class="dropdown">
-                <Link to="/AdminPanel" class="dropbtn">Results</Link>
-                    <div class="dropdown-content">
+                <li className="dropdown">
+                <Link to="/AdminPanel" className="dropbtn">Results</Link>
+                    <div className="dropdown-content">
                         <Link to ="/AddResults">Add Results</Link>
                         <Link to="/CheckResults">Check Results</Link>
                     </div>
                 </li>
 
-                <li class="dropdown"><Link to="/AdminPanel" class="dropbtn">Attendance</Link>
-                    <div class="dropdown-content">
+                <li className="dropdown"><Link to="/AdminPanel" className="dropbtn">Attendance</Link>
+                    <div className="dropdown-content">
                         <Link to="/MarkAttendance">Mark Attendance</Link>
                         <Link to="/CheckAttendance">Check Attendance</Link>
                     </div>
                 </li>
 
-                <li class="dropdown"><Link to="/GenerateReports" class="dropbtn">Reports</Link></li>
+                <li className="dropdown"><Link to="/GenerateReports" className="dropbtn">Reports</Link></li>
 
-                <li class ="dropdown"><Link to="/" class="dropbtn">Sign Out</Link></li>
+                <li className ="dropdown"><Link to="/" className="dropbtn">Sign Out</Link></li>
 
             </ul>
         </nav>
