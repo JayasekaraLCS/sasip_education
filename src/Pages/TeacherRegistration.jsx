@@ -19,7 +19,7 @@ export default function TeacherRegistration() {
     if(!values.teachername){
       errors.teachername = 'Required';
     }
-    else if(!/^[a-zA-Z]+$/i.test(values.teachername)){
+    else if(!/^[A-Za-z\s]+$/i.test(values.teachername)){
       errors.teachername = 'Invalid Name.';
     }
 
@@ -47,7 +47,7 @@ export default function TeacherRegistration() {
     if(!values.teacherphone){
       errors.teacherphone = 'Required';
     }
-    else if(!/^\d{10}$/i.test(values.teacherphone)){
+    else if(!/^\d{9}$/i.test(values.teacherphone)){
       errors.teacherphone = 'Invalid Phone Number.';
     }
 
