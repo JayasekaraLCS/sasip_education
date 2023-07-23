@@ -79,3 +79,7 @@
     
     
   }
+
+  .formik-error {
+    color: red;
+  }

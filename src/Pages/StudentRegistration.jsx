@@ -1,150 +1,333 @@
-import React from 'react'
-import './StudentRegistration.css'
-import Namebar from '../Components/Namebar'
-import Navbar from '../Components/Navbar'
+import React, { useEffect, useState } from 'react';
+import './StudentRegistration.css';
+import Namebar from '../Components/Namebar';
+import Navbar from '../Components/Navbar';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useFormik } from 'formik';
+import axios from 'axios';
+
 
 export default function StudentRegistration() {
+
+    // State to hold the list of teachers fetched from the database
+    const [teachersList, setTeachersList] = useState([]);
+
+    // Function to fetch the list of teachers from the server
+    const fetchTeachersList = () => {
+      axios
+        .get('http://localhost:3001/teachers')
+        .then((response) => {
+          setTeachersList(response.data);
+        })
+        .catch((error) => {
+          console.error('Error fetching teachers:', error);
+        });
+    };
+
+    // Fetch teachers list on component mount
+    useEffect(() => {
+      fetchTeachersList();
+    }, []);
+  
+
+  const validate = values =>{
+    const errors = {};
+
+    if(!values.studentID){
+      errors.studentID = 'Required';
+    }
+    else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.studentID)){
+      errors.studentID = 'Invalid StudentID';
+    }
+
+    if(!values.studentpassword){
+      errors.studentpassword = 'Required';
+    }
+
+    else if(!/^[a-zA-Z0-9]+$/i.test(values.studentpassword)){
+      errors.studentpassword = 'Invalid password.'
+    }
+
+
+    if(!values.studentname){
+      errors.studentname = 'Required';
+    }
+    else if(!/^[A-Za-z\s]+$/i.test(values.studentname)){
+      errors.studentname = 'Invalid Name.';
+    }
+
+    
+    if(!values.school){
+      errors.school = 'Required';
+    }
+    else if(!/^[A-Za-z\s]+$/i.test(values.school)){
+      errors.school = 'Invalid School Name.';
+    }
+
+    if(!values.studentaddress){
+      errors.studentaddress = 'Required';
+    }
+    else if(!/^[a-zA-Z0-9\s\.,#\-]+$/i.test(values.studentaddress)){
+      errors.studentaddress = 'Invalid Address.';
+    }
+
+    if(!values.studentphone){
+      errors.studentphone = 'Required';
+    }
+    else if(!/^\d{9}$/i.test(values.studentphone)){
+      errors.studentphone = 'Invalid Phone Number.';
+    }
+
+    if (!values.grade) {
+      errors.grade = 'Grade is required';
+    }
+
+    const imageFilest = values.studentimage;
+    if (!imageFilest) {
+      errors.studentimage = 'Image is required.';
+    }
+    
+    // Validate "Classes Attend" checkboxes
+    if (!values.classesAttend || values.classesAttend.length === 0) {
+      errors.classesAttend = 'Please select at least one class.';
+    }
+
+    if(!values.parentname){
+      errors.parentname = 'Required';
+    }
+    else if(!/^[A-Za-z\s]+$/i.test(values.parentname)){
+      errors.parentname = 'Invalid Name.';
+    }
+
+    if(!values.parentaddress){
+      errors.parentaddress = 'Required';
+    }
+    else if(!/^[a-zA-Z0-9\s\.,#\-]+$/i.test(values.parentaddress)){
+      errors.parentaddress = 'Invalid Address.';
+    }
+
+    if(!values.parentnic){
+      errors.parentnic = 'Required';
+    }
+    else if(!/^(\d{9}[vVxX]|\d{12})$/i.test(values.parentnic)){
+      errors.parentnic = 'Invalid NIC Number.';
+    }
+
+    if(!values.parentphone){
+      errors.parentphone = 'Required';
+    }
+    else if(!/^\d{9}$/i.test(values.parentphone)){
+      errors.parentphone = 'Invalid Phone Number.';
+    }
+
+    return errors;
+
+  };
+
+    const formik = useFormik({
+      initialValues: {
+        studentID: '',
+        studentpassword: '',
+        studentname: '',
+        school: '',
+        studentaddress: '',
+        studentphone: '',
+        grade: '',
+        studentimage: '',
+        classesAttend: [], // Initialize classesAttend as an empty array
+        parentname: '',
+        parentaddress: '',
+        parentnic: '',
+        parentphone: '',
+        
+
+      },
+
+    validate,
+
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+
+  const handleFormReset = () => {
+    formik.resetForm(); // Add this line to reset the form values
+  };
+
+
+
   return (
     <div className='backgroundstreg'>
-
       <div className='addnamebar'>
-        <Namebar/>
+        <Namebar />
       </div>
-
       <div className='addnavbar'>
-        <Navbar/>
+        <Navbar />
       </div>
-
       <div className='body'>
-        <form>
-            <h2>Student Registration Form</h2>
-            <hr/>
-            <h3>Student Details</h3>
+        <form onSubmit={formik.handleSubmit} onReset={handleFormReset}>
+          <h2>Student Registration Form</h2>
+          <hr/>
+          <h3>Student Details</h3>
 
-            <div class="form-row">
-            <label for="student-number">Student Number/UserID:</label>
-            <input type="text" id="stnumber" name="student-number"/>
-            </div>
+          <div className="form-row">
+            <label htmlFor="studentID">Student Number/UserID:</label>
+            <input type="text" id="studentID" name="studentID" placeholder='Enter the email' onChange={formik.handleChange} value={formik.values.studentID}/>
+            {formik.touched.studentID && formik.errors.studentID ? (
+                <div>{formik.errors.studentID}</div>
+              ) : null}
+          </div>
 
-            <div class="form-row">
-            <label for="password">Password:</label>
-            <input type="password" id="stpassword" name="password" />
-            </div>
+          <div className="form-row">
+            <label htmlFor="studentpassword">Password:</label>
+            <input type="password" id="studentpassword" name="studentpassword" placeholder='Enter the password' onChange={formik.handleChange} value={formik.values.studentpassword} />
+            {formik.touched.studentpassword && formik.errors.studentpassword ? (
+                <div>{formik.errors.studentpassword}</div>
+              ) : null}
+          </div>
 
-            <div class="form-row">
-            <label for="name">Name:</label>
-            <input type="text" id="stname" name="name" />
-            </div>
+          <div className="form-row">
+            <label htmlFor="studentname">Name:</label>
+            <input type="text" id="studentname" name="studentname" placeholder='Enter the name' onChange={formik.handleChange} value={formik.values.studentname} />
+            {formik.touched.studentname && formik.errors.studentname ? (
+                <div>{formik.errors.studentname}</div>
+              ) : null}
+          </div>
 
-            <div class="form-row">
-            <label for="school">School:</label>
-            <input type="text" id="school" name="school" />
-            </div>
+          <div className="form-row">
+            <label htmlFor="school">School:</label>
+            <input type="text" id="school" name="school" placeholder='Enter the school' onChange={formik.handleChange} value={formik.values.school} />
+            {formik.touched.school && formik.errors.school ? (
+                <div>{formik.errors.school}</div>
+              ) : null}
+          </div>
 
-            <div class="form-row">
-            <label for="address">Address:</label>
-            <input type="text" id="staddress" name="address" />
-            </div>
+          <div className="form-row">
+            <label htmlFor="studentaddress">Address:</label>
+            <input type="text" id="studentaddress" name="studentaddress" placeholder='Enter the address' onChange={formik.handleChange} value={formik.values.studentaddress} />
+            {formik.touched.studentaddress && formik.errors.studentaddress ? (
+                <div>{formik.errors.studentaddress}</div>
+              ) : null}
+          </div>
 
-            <div class="form-row">
-            <label for="phone">Phone Number:</label>
-            <input type="text" id="stphone" name="phone" />
-            </div>
+          <div className="form-row">
+            <label htmlFor="studentphone">Phone Number:</label>
+            <input type="text" id="studentphone" name="studentphone" placeholder='Enter the phone number' onChange={formik.handleChange} value={formik.values.studentphone}/>
+            {formik.touched.studentphone && formik.errors.studentphone ? (
+                <div>{formik.errors.studentphone}</div>
+              ) : null}
+          </div>
 
-            <div class="form-row">
-            <label for="grade">Grade:</label>
-            <select id="grade" name="grade" placeholder='Select the grade'>
-                
-                <option value="6">Grade 6</option>
-                <option value="7">Grade 7</option>
-                <option value="8">Grade 8</option>
-                <option value="9">Grade 9</option>
-                <option value="10">Grade 10</option>
-                <option value="11">Grade 11</option>
+          <div className="form-row">
+            <label htmlFor="grade">Grade:</label>
+            <select id="grade" name="grade" onChange={formik.handleChange} value={formik.values.grade}>
+              <option value=""disabled>Select the Grade</option>
+              <option value="6">Grade 6</option>
+              <option value="7">Grade 7</option>
+              <option value="8">Grade 8</option>
+              <option value="9">Grade 9</option>
+              <option value="10">Grade 10</option>
+              <option value="11">Grade 11</option>
             </select>
+                        {formik.touched.grade && formik.errors.grade ? (
+                <div>{formik.errors.grade}</div>
+              ) : null}
+          </div>
+
+          <div className="form-row">
+            <label htmlFor="studentimage">Student Image:</label>
+            <input type="file" id="studentimage" name="studentimage" onChange={formik.handleChange} value={formik.values.studentimage} />
+            {formik.touched.studentimage && formik.errors.studentimage ? (
+                <div>{formik.errors.studentimage}</div>
+              ) : null}
+          </div>
+
+          <div className="form-row">
+            <label>Classes Attend:</label>
+            <div className="checkbox-group" style={{ color: formik.errors.classesAttend ? 'red' : 'inherit' }}>
+              {teachersList.map((teacher) => (
+                <label key={teacher._id} htmlFor={`teacher_${teacher._id}`}>
+                  <input
+                    type="checkbox"
+                    id={`teacher_${teacher._id}`}
+                    name={`teacher_${teacher._id}`}
+                    value={teacher.teachersubject}
+                    onChange={(event) => {
+                      // Update the formik state for the checkboxes
+                      const teacherId = teacher._id;
+                      const isChecked = event.target.checked;
+                      const selectedClasses = formik.values.classesAttend;
+
+                      if (isChecked) {
+                        // Add the selected class to the array
+                        formik.setFieldValue(
+                          'classesAttend',
+                          [...selectedClasses, teacherId],
+                          true // To trigger validation
+                        );
+                      } else {
+                        // Remove the unselected class from the array
+                        formik.setFieldValue(
+                          'classesAttend',
+                          selectedClasses.filter((id) => id !== teacherId),
+                          true // To trigger validation
+                        );
+                      }
+                    }}
+                    checked={formik.values.classesAttend.includes(teacher._id)}
+                  />
+                  {`${teacher.teachersubject} - ${teacher.teacherfirstname} ${teacher.teacherlastname}`}
+                </label>
+              ))}
+              {formik.touched.classesAttend && formik.errors.classesAttend ? (
+                <div>{formik.errors.classesAttend}</div>
+              ) : null}
             </div>
-
-            <div class="form-row">
-            <label for="student-image">Student Image:</label>
-            <input type="file" id="stimage" name="student-image" />
-            </div>
-
-            <div class="form-row">
-            <label for="classes-attend">Classes Attend:</label>
-            <div class="checkbox-group" >
-
-            <label for="Mathematics - Roshan Sir">
-            <input type="checkbox" id="math1" name="classes-attend" value="math"/>
-            Mathematics - Roshan Sir
-            </label>
-
-            <label for="Mathematics - Kalum Sir">
-            <input type="checkbox" id="math2" name="classes-attend" value="math"/>
-            Mathematics - Kalum Sir
-            </label>
-
-            <label for="Science - Pradeep sir">
-            <input type="checkbox" id="science1" name="classes-attend" value="science"/>
-            Science - Pradeep Sir
-            </label>
-
-            <label for="Science - Nilu sir">
-            <input type="checkbox" id="science2" name="classes-attend" value="science"/>
-            Science - Nilu Sir
-            </label>
-
-            <label for="English - Lakshika sir">
-            <input type="checkbox" id="english1" name="classes-attend" value="english"/>
-            English - Lakshika sir
-            </label>
-            
-            <label for="English - Kalpa sir">
-            <input type="checkbox" id="english2" name="classes-attend" value="english"/>
-            English - Kalpa sir
-            </label>
+          </div>
 
 
+          <hr />
+          <h3>Parent Details</h3>
 
-            </div>
-            </div>
+          <div className="form-row">
+            <label htmlFor="parentname">Parent Name:</label>
+            <input type="text" id="parentname" name="parentname" placeholder='Enter Parent Name' onChange={formik.handleChange} value={formik.values.parentname}/>
+            {formik.touched.parentname && formik.errors.parentname ? (
+                <div>{formik.errors.parentname}</div>
+              ) : null}
+          </div>
 
-            <hr/>
-            <h3>Parent Details</h3>
+          <div className="form-row">
+            <label htmlFor="parentaddress">Address:</label>
+            <input type="text" id="parentaddress" name="parentaddress" placeholder='Enter parent address' onChange={formik.handleChange} value={formik.values.parentaddress}/>
+            {formik.touched.parentaddress && formik.errors.parentaddress ? (
+                <div>{formik.errors.parentaddress}</div>
+              ) : null}
+          </div>
 
-            <div class="form-row">
-            <label for="parent-id">ParentID:</label>
-            <input type="text" id="parentid" name="parent-id" />
-            </div>
+          <div className="form-row">
+            <label htmlFor="nic-number">NIC Number:</label>
+            <input type="text" id="parentnic" name="parentnic" placeholder='Enter nic number' onChange={formik.handleChange} value={formik.values.parentnic}/>
+            {formik.touched.parentnic && formik.errors.parentnic ? (
+                <div>{formik.errors.parentnic}</div>
+              ) : null}
+          </div>
 
-            <div class="form-row">
-            <label for="parent-name">Parent Name:</label>
-            <input type="text" id="parentname" name="parent-name" />
-            </div>
+          <div className="form-row">
+            <label htmlFor="parentphone">Phone Number:</label>
+            <input type="text" id="parentphone" name="parentphone" placeholder='Enter phone number' onChange={formik.handleChange} value={formik.values.parentphone}/>
+            {formik.touched.parentphone && formik.errors.parentphone ? (
+                <div>{formik.errors.parentphone}</div>
+              ) : null}
+          </div>
 
-            <div class="form-row">
-            <label for="parent-address">Address:</label>
-            <input type="text" id="parentaddress" name="parent-address" />
-            </div>
-
-            <div class="form-row">
-            <label for="nic-number">NIC Number:</label>
-            <input type="text" id="nic-number" name="nic-number" />
-            </div>
-
-            <div class="form-row">
-            <label for="parent-phone">Phone Number:</label>
-            <input type="text" id="parentphone" name="parent-phone" />
-            </div>
-
-            <center>
-                <button type="submit">Submit</button>
-                <button type="reset">Reset</button>
-            </center>
-            
+          <center>
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+          </center>
         </form>
-        
+      </div>
     </div>
-
-    </div>
-  )
+  );
 }

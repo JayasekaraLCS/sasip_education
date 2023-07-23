@@ -1,7 +1,11 @@
+import React from 'react';
 import './TeacherRegistration.css'
 import Namebar from '../Components/Namebar'
 import Navbar from '../Components/Navbar'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useFormik } from 'formik';
+import axios from 'axios';
 
 
 export default function TeacherRegistration() {
@@ -16,6 +20,15 @@ export default function TeacherRegistration() {
       errors.email = 'Invalid TeacherID';
     }
 
+    if(!values.teacherpassword){
+      errors.teacherpassword = 'Required';
+    }
+
+    else if(!/^[a-zA-Z0-9]+$/i.test(values.password)){
+      errors.password = 'Invalid password.'
+    }
+
+
     if(!values.teachername){
       errors.teachername = 'Required';
     }
@@ -23,6 +36,7 @@ export default function TeacherRegistration() {
       errors.teachername = 'Invalid Name.';
     }
 
+    
     if(!values.teacherfirstname){
       errors.teacherfirstname = 'Required';
     }
@@ -51,6 +65,13 @@ export default function TeacherRegistration() {
       errors.teacherphone = 'Invalid Phone Number.';
     }
 
+
+    const imageFile = values.teacherimage;
+    if (!imageFile) {
+      errors.teacherimage = 'Image is required.';
+    } 
+
+
     if(!values.teachersubject){
       errors.teachersubject = 'Required';
     }
@@ -67,23 +88,57 @@ export default function TeacherRegistration() {
 
   };
 
+  
+
   const formik = useFormik({
     initialValues: {
       teacherID: '',
+      teacherpassword: '',
       teachername: '',
       teacherfirstname: '',
       teacherlastname: '',
       nic: '',
       teacherphone: '',
+      teacherimage: '',
       teachersubject: '',
     },
 
     validate,
 
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
+      axios.post('http://localhost:3001/register',{
+        teacherID: values.teacherID,
+        teacherpassword: values.teacherpassword,
+        teachername: values.teachername,
+        teacherfirstname: values.teacherfirstname,
+        teacherlastname: values.teacherlastname,
+        nic: values.nic,
+        teacherphone: values.teacherphone,
+        teacherimage: values.teacherimage,
+        teachersubject: values.teachersubject
+      })
+      .then((result) => {
+        console.log(result);
+        toast.success('Data successfully saved!', {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 3000, // 3 seconds duration for the toast
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error('Error while saving data!', {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 3000,
+        });
+      });
     },
   });
+
+  const handleFormReset = () => {
+    formik.resetForm(); // Add this line to reset the form values
+  };
+
 
   return (
     <div className='backgroundstreg'>
@@ -98,14 +153,14 @@ export default function TeacherRegistration() {
 
       <div className='body'>
         
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit} onReset={handleFormReset}>
             <h2>Teacher Registration Form</h2>
             <hr/>
             <h3>Teacher Details</h3>
 
             <div className="form-row">
             <label htmlfor="TeacherID">TeacherID/UserID:</label>
-            <input type="email" id="teacherID" name="teacherID" placeholder='Enter the email' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.teacherID}/>
+            <input type="email" id="teacherID" name="teacherID" placeholder='Enter the email' onChange={formik.handleChange} value={formik.values.teacherID}/>
                     {formik.touched.teacherID && formik.errors.teacherID ? (
                 <div>{formik.errors.teacherID}</div>
               ) : null}
@@ -113,8 +168,11 @@ export default function TeacherRegistration() {
             </div>
 
             <div className="form-row">
-            <label htmlFor="password">Password:</label>
-            <input type="password" id="teacherpassword" name="teacherpassword" placeholder='Enter the password'  required/>
+            <label htmlFor="teacherpassword">Password:</label>
+            <input type="password" id="teacherpassword" name="teacherpassword" placeholder='Enter the password' onChange={formik.handleChange} value={formik.values.teacherpassword}/>
+                    {formik.touched.teacherpassword && formik.errors.teacherpassword ? (
+                        <div>{formik.errors.teacherpassword}</div>
+                      ) : null}      
             </div>
 
             <div className="form-row">
@@ -162,7 +220,10 @@ export default function TeacherRegistration() {
 
             <div className="form-row">
             <label htmlFor="student-image">Teacher Image:</label>
-            <input type="file" id="teacherimage" name="teacherimage" required/>
+            <input type="file" id="teacherimage" name="teacherimage" onChange={formik.handleChange} value={formik.values.teacherimage}/>
+                {formik.touched.teacherimage && formik.errors.teacherimage ? (
+                    <div>{formik.errors.teacherimage}</div>
+                  ) : null}
             </div>
 
             <div className="form-row">
@@ -180,6 +241,13 @@ export default function TeacherRegistration() {
             </center>
             
         </form> 
+
+        <ToastContainer
+        toastStyle={{
+          background: '#00FF00', // Replace with your desired background color for error toasts
+          color: '#FFFFFF', // Replace with your desired text color for error toasts
+        }}
+      />
         
     </div>
 
