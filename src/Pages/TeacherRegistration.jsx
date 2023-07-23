@@ -107,7 +107,7 @@ export default function TeacherRegistration() {
 
     onSubmit: values => {
       // alert(JSON.stringify(values, null, 2));
-      axios.post('http://localhost:3001/register',{
+      axios.post('http://localhost:3001/teachers',{
         teacherID: values.teacherID,
         teacherpassword: values.teacherpassword,
         teachername: values.teachername,

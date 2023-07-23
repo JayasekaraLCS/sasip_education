@@ -147,7 +147,37 @@ export default function StudentRegistration() {
     validate,
 
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
+      axios.post('http://localhost:3001/students',{
+        studentID: values.studentID,
+        studentpassword: values.studentpassword,
+        studentname: values.studentname,
+        school: values.school,
+        studentaddress: values.studentaddress,
+        studentphone: values.studentphone,
+        grade: values.grade,
+        studentimage: values.studentimage,
+        classesAttend: values.classesAttend,
+        parentname: values.parentname,
+        parentaddress: values.parentaddress,
+        parentnic: values.parentnic,
+        parentphone: values.parentphone
+
+      })
+      .then((result) => {
+        console.log(result);
+        toast.success('Data successfully saved!', {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 3000, // 3 seconds duration for the toast
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error('Error while saving data!', {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 3000,
+        });
+      });
     },
   });
 
@@ -327,6 +357,13 @@ export default function StudentRegistration() {
             <button type="reset">Reset</button>
           </center>
         </form>
+
+        <ToastContainer
+        toastStyle={{
+          background: '#00FF00', // Replace with your desired background color for error toasts
+          color: '#FFFFFF', // Replace with your desired text color for error toasts
+        }}
+      />
       </div>
     </div>
   );
