@@ -20,6 +20,8 @@ import AddResults from './Pages/AddResults';
 import NoPage from './Pages/NoPage';
 import StudentLogin from './Pages/StudentLogin';
 import TeacherLogin from './Pages/TeacherLogin';
+import VIewTeachers from './Pages/VIewTeachers';
+import ViewStudents from './Pages/ViewStudents';
 
 
 
@@ -47,6 +49,9 @@ function App() {
           <Route path ='*' element ={<NoPage/>}  />
           <Route path = '/StudentLogin' element ={<StudentLogin/>}  />
           <Route path = '/TeacherLogin' element ={<TeacherLogin/>} />
+          <Route path = '/VIewTeachers' element ={<VIewTeachers/>} />
+          <Route path = '/ViewStudents' element ={<ViewStudents/>} />
+
           
 
         </Routes>
@@ -70,12 +75,6 @@ function App() {
       {/* <PageSetup/> */}
       {/* <Example/> */}
       {/* <NoPage/> */}
-
-     
-     
-      
-      
-     
       {/* <AddResults/> */}
       
       

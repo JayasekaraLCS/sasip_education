@@ -40,13 +40,36 @@
     background-color: #f1f1f1;
     padding: 20px;
     border-radius: 10px;
-    flex: 0; /* Maintain original width */
   }
   
   table {
     width: 100%;
     border-collapse: collapse;
   }
+  
+  /* Add some styling for table cells and headers */
+  table td,
+  table th {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  /* Style table header */
+  table th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Add some spacing between table cells */
+  table tr td:not(:last-child) {
+    margin-right: 10px;
+  }
+  
+  /* Center the table within its container */
+  .table-section {
+    display: flex;
+    justify-content: center;
+  }
+  
   
 
 

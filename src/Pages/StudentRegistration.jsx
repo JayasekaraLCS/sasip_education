@@ -90,7 +90,7 @@ export default function StudentRegistration() {
     
     // Validate "Classes Attend" checkboxes
     if (!values.classesAttend || values.classesAttend.length === 0) {
-      errors.classesAttend = 'Please select at least one class.';
+      errors.classesAttend = 'Please select at least one class..';
     }
 
     if(!values.parentname){

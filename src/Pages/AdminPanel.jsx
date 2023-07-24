@@ -44,9 +44,11 @@ export default function AdminPanel() {
 
                           <tr>
                             <td>
+                              <Link to ="/ViewStudents">
                               <button type="button" className="viewstudent-button">
-                                View Student
+                                View Students
                               </button>
+                              </Link>
                             </td>
                           </tr>
 
@@ -83,9 +85,11 @@ export default function AdminPanel() {
 
                           <tr>
                             <td>
+                              <Link to = "/VIewTeachers">
                               <button type="button" className="viewteacher-button">
-                                View Teacher
+                                View Teachers
                               </button>
+                              </Link>
                             </td>
                           </tr>
 
