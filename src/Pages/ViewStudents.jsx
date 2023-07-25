@@ -133,7 +133,7 @@ export default function ViewStudents() {
               <td>
                     {student.classesAttend.map((teacher) => (
                     <div key={teacher._id}>
-                        {teacher.teachersubject} - {teacher.teacherfirstname}
+                        {teacher.teachersubject}-{teacher.teacherfirstname}
                     </div>
                     ))}
             </td>

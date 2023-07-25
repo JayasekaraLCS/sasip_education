@@ -22,6 +22,9 @@ import StudentLogin from './Pages/StudentLogin';
 import TeacherLogin from './Pages/TeacherLogin';
 import VIewTeachers from './Pages/VIewTeachers';
 import ViewStudents from './Pages/ViewStudents';
+import UpdateTeacher from './Pages/UpdateTeacher';
+import DeleteTeacher from './Pages/DeleteTeacher';
+
 
 
 
@@ -51,6 +54,9 @@ function App() {
           <Route path = '/TeacherLogin' element ={<TeacherLogin/>} />
           <Route path = '/VIewTeachers' element ={<VIewTeachers/>} />
           <Route path = '/ViewStudents' element ={<ViewStudents/>} />
+          <Route path = '/UpdateTeacher' element ={<UpdateTeacher/>} />
+          <Route path = '/DeleteTeacher' element ={<DeleteTeacher/>} />
+          
 
           
 
