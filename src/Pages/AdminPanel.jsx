@@ -54,9 +54,11 @@ export default function AdminPanel() {
 
                           <tr>
                             <td>
+                              <Link to = "/UpdateStudentPage">
                               <button type="button" className="remandupstudent-button">
                                 Update Student
                               </button>
+                              </Link>
                             </td>
                           </tr>
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './TeacherRegistration.css'
 import Namebar from '../Components/Namebar'
 import Navbar from '../Components/Navbar'
@@ -6,9 +6,27 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useFormik } from 'formik';
 import axios from 'axios';
+// import UpdateStudent from './UpdateStudent'; // Import the UpdateStudent component
 
 
 export default function TeacherRegistration() {
+
+  const [teachersList, setTeachersList] = useState([]);
+
+  useEffect(() => {
+    fetchTeachersList();
+  }, []);
+
+  const fetchTeachersList = () => {
+    axios
+      .get('http://localhost:3001/teachers')
+      .then((response) => {
+        setTeachersList(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching teachers:', error);
+      });
+  };
   
   const validate = values =>{
     const errors = {};
@@ -247,12 +265,15 @@ export default function TeacherRegistration() {
           background: '#00FF00', // Replace with your desired background color for error toasts
           color: '#FFFFFF', // Replace with your desired text color for error toasts
         }}
-      />
+        />
+
         
-    </div>
+        {/* <UpdateStudent teachersList={teachersList} />    */}
 
-      
-
+          
     </div>
-  )
+  </div>
+
+  
+  );
 }
