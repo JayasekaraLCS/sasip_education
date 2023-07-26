@@ -21,19 +21,24 @@ const DeleteTeacher = () => {
   };
 
   const handleDelete = (teacherId) => {
-    // Remove the teacher from the state immediately
-    const updatedTeachers = teachers.filter((teacher) => teacher._id !== teacherId);
-    setTeachers(updatedTeachers);
+    // Show a confirmation message before deleting the teacher
+    const isConfirmed = window.confirm('Are you sure you want to delete this teacher?');
 
-    // Perform the delete logic using axios.delete
-    axios
-      .delete(`http://localhost:3001/teachers/${teacherId}`)
-      .then((response) => {
-        console.log('Teacher deleted successfully:', response.data);
-      })
-      .catch((error) => {
-        console.error('Error deleting teacher:', error);
-      });
+    if (isConfirmed) {
+      // Remove the teacher from the state immediately
+      const updatedTeachers = teachers.filter((teacher) => teacher._id !== teacherId);
+      setTeachers(updatedTeachers);
+
+      // Perform the delete logic using axios.delete
+      axios
+        .delete(`http://localhost:3001/teachers/${teacherId}`)
+        .then((response) => {
+          console.log('Teacher deleted successfully:', response.data);
+        })
+        .catch((error) => {
+          console.error('Error deleting teacher:', error);
+        });
+    }
   };
 
   return (

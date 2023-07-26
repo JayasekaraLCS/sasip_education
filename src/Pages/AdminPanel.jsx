@@ -64,9 +64,11 @@ export default function AdminPanel() {
 
                           <tr>
                             <td>
+                              <Link to = "/DeleteStudent">
                               <button type="button" className="remandupstudent-button">
                                 Remove Student
                               </button>
+                              </Link>
                             </td>
                           </tr>
 

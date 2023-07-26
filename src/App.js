@@ -27,6 +27,7 @@ import DeleteTeacher from './Pages/DeleteTeacher';
 import UpdateStudent from './Pages/UpdateStudent';
 import TeacherRegistrationPage from './Pages/TeacherRegistrationPage';
 import UpdateStudentPage from './Pages/UpdateStudentPage';
+import DeleteStudent from './Pages/DeleteStudent';
 
 
 
@@ -62,6 +63,7 @@ function App() {
           <Route path = '/UpdateStudent' element ={<UpdateStudent/>} />
           <Route path = '/TeacherRegistrationPage' element = {<TeacherRegistrationPage/>} />
           <Route path = '/UpdateStudentPage' element = {<UpdateStudentPage/>} />
+          <Route path = '/DeleteStudent' element = {<DeleteStudent/>} />
           
           
           
