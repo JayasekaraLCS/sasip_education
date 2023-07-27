@@ -11,31 +11,31 @@ export default function TeacherLogin() {
         <Namebar/>
       </div>
 
-      <div class="section">
+      <div className="section">
         <h1>Teacher Login</h1>
-      <div class="buttons">
-        <Link to ='/ViewProfile'>
-          <button class="button">View Profile</button>
+      <div className="buttons">
+        <Link to ='/ViewTeacherProfile'>
+          <button className="button">View Profile</button>
         </Link>
         
         <Link to ='/CheckResults'>
-          <button class="button">Check Results</button>
+          <button className="button">Check Results</button>
         </Link>
         
         <Link to ='/CheckAttendance'>
-          <button class="button">Check Attendance</button>
+          <button className="button">Check Attendance</button>
         </Link>
         
         <Link to = '/CheckPayments'>
-          <button class="button">Check Payments</button>
+          <button className="button">Check Payments</button>
         </Link>
         
         <Link to = '/GenerateReports'>
-          <button class="button">Reports</button>
+          <button className="button">Reports</button>
         </Link>
       </div>
-      <div class="sign-out">
-        <Link to ="/" class="link">Sign Out</Link>
+      <div className="sign-out">
+        <Link to ="/" className="link">Sign Out</Link>
       </div>
     </div>
 
