@@ -32,6 +32,7 @@ export default function MakePayments() {
                 <div class="form-row">
                     <label for="grade">Grade:</label>
                     <select id="grade" name="grade">
+                    <option value=""disabled>Select the Grade</option>
                     <option value="6">Grade 6</option>
                     <option value="7">Grade 7</option>
                     <option value="8">Grade 8</option>
@@ -42,13 +43,22 @@ export default function MakePayments() {
                 </div>
 
                 <div class="form-row">
-                    <label for="month">Month:</label>
-                    <select id="month" name="month">
+                  <label for="month">Month:</label>
+                  <select id="month" name="month">
+                    <option value=""disabled>Select the Month</option>
                     <option value="January">January</option>
                     <option value="February">February</option>
                     <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
                     <option value="December">December</option>
-                    </select>
+                  </select>
                 </div>
 
                 <div class="form-row">

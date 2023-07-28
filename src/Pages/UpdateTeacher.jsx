@@ -6,6 +6,7 @@ const UpdateTeacher = () => {
   const [teachers, setTeachers] = useState([]);
   const [selectedTeacher, setSelectedTeacher] = useState(null);
   const [isUpdateMode, setIsUpdateMode] = useState(false);
+  const [filterValue, setFilterValue] = useState('');
 
   useEffect(() => {
     // Fetch teachers on component mount
@@ -59,15 +60,37 @@ const UpdateTeacher = () => {
         console.error('Error updating teacher:', error);
       });
   };
+
+  const handleFilterChange = (e) => {
+    setFilterValue(e.target.value);
+  };
+
+  const filteredTeachers = teachers.filter((teacher) =>
+    teacher.teachername.toLowerCase().includes(filterValue.toLowerCase())
+  );
   
 
   return (
   <div className="update-teacher-container">
       <h2>Update Teacher Information</h2>
+
+            {/* Filter input field */}
+      <div className="filter">
+        <label htmlFor="filter">Filter by Teacher Name:</label>
+        <input
+          type="text"
+          id="filter"
+          value={filterValue}
+          onChange={handleFilterChange}
+          placeholder="Enter Teacher Name"
+        />
+      </div>
+
+
       <div className="teacher-list">
         <h3>Teachers List</h3>
         <ul>
-          {teachers.map((teacher) => (
+          {filteredTeachers.map((teacher) => (
             <li key={teacher._id}>
               {teacher.teachername} -{' '}
               <button onClick={() => handleTeacherSelect(teacher)}>Update</button>

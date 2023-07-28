@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const DeleteTeacher = () => {
   const [teachers, setTeachers] = useState([]);
+  const [filterValue, setFilterValue] = useState('');
 
   useEffect(() => {
     // Fetch teachers on component mount
@@ -41,13 +42,37 @@ const DeleteTeacher = () => {
     }
   };
 
+
+  const handleFilterChange = (e) => {
+    setFilterValue(e.target.value);
+  };
+
+  const filteredTeachers = teachers.filter((teacher) =>
+    teacher.teachername.toLowerCase().includes(filterValue.toLowerCase())
+  );
+
+
+
   return (
     <div className="delete-teacher-container">
       <h2>Delete Teachers</h2>
+
+      {/* Filter input field */}
+      <div className="filter">
+        <label htmlFor="filter">Filter by Teacher Name:</label>
+        <input
+          type="text"
+          id="filter"
+          value={filterValue}
+          onChange={handleFilterChange}
+          placeholder="Enter Teacher Name"
+        />
+      </div>
+
       <div className="teacher-list">
         <h3>Teachers List</h3>
         <ul>
-          {teachers.map((teacher) => (
+          {filteredTeachers.map((teacher) => (
             <li key={teacher._id}>
               {teacher.teachername} - <button onClick={() => handleDelete(teacher._id)}>Delete</button>
             </li>

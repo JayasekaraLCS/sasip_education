@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const DeleteStudent = () => {
   const [students, setStudents] = useState([]);
+  const [filterValue, setFilterValue] = useState('');
 
   useEffect(() => {
     fetchStudents();
@@ -36,13 +37,34 @@ const DeleteStudent = () => {
     }
   };
 
+  const handleFilterChange = (e) => {
+    setFilterValue(e.target.value);
+  };
+
+  const filteredStudents = students.filter((student) =>
+    student.studentname.toLowerCase().includes(filterValue.toLowerCase())
+  );
+
   return (
     <div className="delete-student-container">
       <h2>Delete Students</h2>
+
+      {/* Filter input field */}
+      <div className="filter">
+        <label htmlFor="filter">Filter by Student Name:</label>
+        <input
+          type="text"
+          id="filter"
+          value={filterValue}
+          onChange={handleFilterChange}
+          placeholder="Enter Student Name"
+        />
+      </div>
+
       <div className="student-list">
         <h3>Students List</h3>
         <ul>
-          {students.map((student) => (
+          {filteredStudents.map((student) => (
             <li key={student._id}>
               {student.studentname} - <button onClick={() => handleDelete(student._id)}>Delete</button>
             </li>
