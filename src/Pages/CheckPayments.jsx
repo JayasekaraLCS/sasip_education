@@ -1,60 +1,140 @@
-import React from 'react'
-import './CheckPayments.css'
-import Navbar from '../Components/Navbar'
-import Namebar from '../Components/Namebar'
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default function CheckPayments() {
+  const [payments, setPayments] = useState([]);
+  const [filters, setFilters] = useState({
+    studentId: '',
+    studentName: '',
+    grade: '',
+    month: '',
+    paidClass: '',
+    classFees: '',
+  });
+
+  useEffect(() => {
+    fetchPayments();
+  }, []);
+
+  const fetchPayments = () => {
+    axios
+      .get('http://localhost:3001/payments')
+      .then((response) => {
+        setPayments(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching payments:', error);
+      });
+  };
+
+  const handleFilterChange = (event) => {
+    const { name, value } = event.target;
+    setFilters({ ...filters, [name]: value });
+  };
+
+  const filteredPayments = payments.filter((payment) => {
+    return (
+      payment.studentId.includes(filters.studentId) &&
+      payment.studentName.includes(filters.studentName) &&
+      payment.grade.includes(filters.grade) &&
+      payment.month.includes(filters.month) &&
+      payment.paidClass.includes(filters.paidClass) &&
+      (filters.classFees === '' || parseFloat(payment.classFees) === parseFloat(filters.classFees))
+    );
+  });
+
   return (
-    <div className='backgroundstreg'>
+    <div>
+      <h2>Class Payments Details</h2>
 
-      <div className='addnamebar'>
-        <Namebar/>
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Student ID
+              <div>
+                <input
+                  type="text"
+                  name="studentId"
+                  value={filters.studentId}
+                  onChange={handleFilterChange}
+                />
+              </div>
+            </th>
 
-      <div className='addnavbar'>
-        <Navbar/>
-      </div>
+            <th>Student Name
 
-        <div class="checkPaymentsBack">
-
-                <table>
-
-                <tr>
-
-                <td>
-                <div class="form-section">
-
-                <h2>Check Payments</h2>
-                <label for="student-id">Student ID:</label>
-                <input type="text" id="student-id" name="student-id"/>
-
-                <div class="button-container">
-                    <button type="submit">View Payments</button>
-                    <button type="reset">Reset</button>
-                </div>
-
-                </div> 
-                </td>
-
-                <td>
-                <div className='displayPayments'>
-                  <h2>Payment Details</h2>
-
-                  <div className='table-container'></div> 
-                  {/* to generate a table */}
+              <div>
+                <input
+                  type="text"
+                  name="studentName"
+                  value={filters.studentName}
+                  onChange={handleFilterChange}
+                />
+              </div>
+            </th>
 
 
+            <th>Grade
+              <div>
+                <input
+                  type="text"
+                  name="grade"
+                  value={filters.grade}
+                  onChange={handleFilterChange}
+                />
+              </div>
+            </th>
 
 
-                </div>
-                </td>
+            <th>Month
+              <div>
+                <input
+                  type="text"
+                  name="month"
+                  value={filters.month}
+                  onChange={handleFilterChange}
+                />
+              </div>
+            </th>
 
-                </tr>
-                </table>
-        </div>
+            <th>Paid Class 
+            <div>
+              <input
+                type="text"
+                name="paidClass"
+                value={filters.paidClass}
+                onChange={handleFilterChange}
+              />
+            </div>
+            </th>
 
 
+            <th>Class Fees
+              <div>
+                <input
+                  type="text"
+                  name="classFees"
+                  value={filters.classFees}
+                  onChange={handleFilterChange}
+                />
+              </div>
+            </th>
+
+          </tr>
+        </thead>
+        <tbody>
+          {filteredPayments.map((payment) => (
+            <tr key={payment._id}>
+              <td>{payment.studentId}</td>
+              <td>{payment.studentName}</td>
+              <td>{payment.grade}</td>
+              <td>{payment.month}</td>
+              <td>{payment.paidClass}</td>
+              <td>{payment.classFees}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
-  )
+  );
 }
