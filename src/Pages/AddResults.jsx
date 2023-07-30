@@ -71,7 +71,7 @@ export default function AddResults() {
     };
 
     axios
-      .post('http://localhost:3001/results', resultData)
+      .post('http://localhost:3001/results-email', resultData)
       .then((response) => {
         console.log(response.data);
         setSubmitting(false);
