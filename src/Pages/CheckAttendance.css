@@ -51,7 +51,8 @@
   table td,
   table th {
     padding: 10px;
-    border: 1px solid #ddd;
+    
+    border: 1px solid black;
   }
   
   /* Style table header */
@@ -70,8 +71,6 @@
     justify-content: center;
   }
   
-  
-
 
   .displayAttendance{
     text-align: center;
@@ -79,5 +78,5 @@
     /* border-radius: 10px; */
     margin-top: 10px;
     
-}
+  }
 
