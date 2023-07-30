@@ -23,14 +23,16 @@ export default function StudentLogin() {
           <button class="button">Check Results</button>
         </Link>
 
+        <Link to = '/CheckPayments'>
+          <button class="button">Check Payments</button>
+        </Link>
+
         <Link to = '/CheckAttendance'>
           <button class="button">Check Attendance</button>
         </Link>
 
-        <Link to = '/CheckPayments'>
-          <button class="button">Check Payments</button>
-        </Link>
       </div>
+
       <div class="sign-out">
         <Link to ="/" class="link">Sign Out</Link>
       </div>

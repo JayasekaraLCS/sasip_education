@@ -21,13 +21,13 @@ export default function TeacherLogin() {
         <Link to ='/CheckResults'>
           <button className="button">Check Results</button>
         </Link>
+
+        <Link to = '/CheckPayments'>
+          <button className="button">Check Payments</button>
+        </Link>
         
         <Link to ='/CheckAttendance'>
           <button className="button">Check Attendance</button>
-        </Link>
-        
-        <Link to = '/CheckPayments'>
-          <button className="button">Check Payments</button>
         </Link>
         
         <Link to = '/GenerateReports'>

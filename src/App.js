@@ -38,6 +38,7 @@ import ViewTeacherProfile from './Pages/ViewTeacherProfile';
 
 
 
+
 function App() {
   return (
     <div>
@@ -66,6 +67,7 @@ function App() {
           <Route path = '/UpdateStudentPage' element = {<UpdateStudentPage/>} />
           <Route path = '/DeleteStudent' element = {<DeleteStudent/>} />
           <Route path = '/ViewTeacherProfile' element = {<ViewTeacherProfile/>} />
+          
           
           
           
