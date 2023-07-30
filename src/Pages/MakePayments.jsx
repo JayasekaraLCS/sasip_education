@@ -13,7 +13,7 @@ export default function MakePayments() {
   const [students, setStudents] = useState([]);
   const [selectedStudentName, setSelectedStudentName] = useState(''); // State to hold the selected student's name
   const [selectedStudentGrade, setSelectedStudentGrade] = useState(''); // State to hold the selected student's grade
-
+  
 
   useEffect(() => {
     fetch('http://localhost:3001/newteachers')
@@ -75,6 +75,24 @@ export default function MakePayments() {
       paidClass: values.paidClass,
       classFees: values.classFees,
     };
+
+
+        // // Call the sendEmail function when the payment is successfully made
+        // sendEmail(paymentData, selectedStudentId)
+        // .then((emailSent) => {
+        //   if (emailSent) {
+        //     console.log('Email sent successfully!');
+        //     // Handle success, display a success message or redirect to another page
+        //   } else {
+        //     console.log('Failed to send email.');
+        //     // Handle email sending failure, if needed
+        //   }
+        // })
+        // .catch((error) => {
+        //   console.error('Error sending email:', error);
+        //   // Handle email sending failure, if needed
+        // });
+  
 
     console.log(paymentData)
   

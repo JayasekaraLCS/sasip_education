@@ -57,6 +57,7 @@ export default function CheckPayments() {
                   name="studentId"
                   value={filters.studentId}
                   onChange={handleFilterChange}
+                  placeholder='Enter Student ID'
                 />
               </div>
             </th>
@@ -69,6 +70,7 @@ export default function CheckPayments() {
                   name="studentName"
                   value={filters.studentName}
                   onChange={handleFilterChange}
+                  placeholder='Enter Student Name'
                 />
               </div>
             </th>
@@ -81,6 +83,7 @@ export default function CheckPayments() {
                   name="grade"
                   value={filters.grade}
                   onChange={handleFilterChange}
+                  placeholder='Enter the Grade'
                 />
               </div>
             </th>
@@ -93,6 +96,7 @@ export default function CheckPayments() {
                   name="month"
                   value={filters.month}
                   onChange={handleFilterChange}
+                  placeholder='Enter the Month'
                 />
               </div>
             </th>
@@ -104,6 +108,7 @@ export default function CheckPayments() {
                 name="paidClass"
                 value={filters.paidClass}
                 onChange={handleFilterChange}
+                placeholder='Search by Class'
               />
             </div>
             </th>
@@ -116,6 +121,7 @@ export default function CheckPayments() {
                   name="classFees"
                   value={filters.classFees}
                   onChange={handleFilterChange}
+                  placeholder='Search by fee'
                 />
               </div>
             </th>
