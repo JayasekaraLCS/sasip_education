@@ -76,28 +76,10 @@ export default function MakePayments() {
       classFees: values.classFees,
     };
 
-
-        // // Call the sendEmail function when the payment is successfully made
-        // sendEmail(paymentData, selectedStudentId)
-        // .then((emailSent) => {
-        //   if (emailSent) {
-        //     console.log('Email sent successfully!');
-        //     // Handle success, display a success message or redirect to another page
-        //   } else {
-        //     console.log('Failed to send email.');
-        //     // Handle email sending failure, if needed
-        //   }
-        // })
-        // .catch((error) => {
-        //   console.error('Error sending email:', error);
-        //   // Handle email sending failure, if needed
-        // });
-  
-
     console.log(paymentData)
   
     axios
-      .post('http://localhost:3001/payments', paymentData)
+      .post('http://localhost:3001/payments-email', paymentData)
       .then((response) => {
         console.log(response.data);
         setSubmitting(false);
