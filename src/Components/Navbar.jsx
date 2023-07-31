@@ -10,12 +10,6 @@ export default function Navbar() {
         <nav>
             <ul>
 
-                <li className ="dropdown"><Link to ="/AdminPanel" className="dropbtn">Payments</Link>
-                    <div className="dropdown-content">
-                        <Link to="/MakePayments">Make Payments</Link>
-                        <Link to="/CheckPayments">Check Payments</Link>
-                    </div>
-                </li>
 
                 <li className="dropdown">
                 <Link to="/AdminPanel" className="dropbtn">Results</Link>
@@ -25,14 +19,22 @@ export default function Navbar() {
                     </div>
                 </li>
 
+                <li className ="dropdown"><Link to ="/AdminPanel" className="dropbtn">Payments</Link>
+                    <div className="dropdown-content">
+                        <Link to="/MakePayments">Make Payments</Link>
+                        <Link to="/CheckPayments">Check Payments</Link>
+                    </div>
+                </li>
+
+
+                <li className="dropdown"><Link to="/GenerateReports" className="dropbtn">Reports</Link></li>
+
                 <li className="dropdown"><Link to="/AdminPanel" className="dropbtn">Attendance</Link>
                     <div className="dropdown-content">
                         <Link to="/MarkAttendance">Mark Attendance</Link>
                         <Link to="/CheckAttendance">Check Attendance</Link>
                     </div>
                 </li>
-
-                <li className="dropdown"><Link to="/GenerateReports" className="dropbtn">Reports</Link></li>
 
                 <li className ="dropdown"><Link to="/" className="dropbtn">Sign Out</Link></li>
 

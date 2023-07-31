@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react';
 import Namebar from '../Components/Namebar'
 import './StudentLogin.css'
 import { Link } from 'react-router-dom'
 
 export default function StudentLogin() {
+
+
+
   return (
     <div className='backgroundstreg'>
 
-      <div className='addnamebar'>
-        <Namebar/>
-      </div>
+      
+        <div className='addnamebar'>
+          <Namebar />
+        </div>
+      
 
       <div class="section">
         <h1>Student Login</h1>
@@ -23,8 +28,8 @@ export default function StudentLogin() {
           <button class="button">Check Results</button>
         </Link>
 
-        <Link to = '/CheckPayments'>
-          <button class="button">Check Payments</button>
+        <Link to='/MakeOnlinePayments'>
+            <button class="button">Make Payments</button>
         </Link>
 
         <Link to = '/CheckAttendance'>
