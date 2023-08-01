@@ -9,6 +9,12 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function MakePayments() {
 
+
+  const handleButtonClick = () => {
+    // Redirect to the desired URL when the button is clicked
+    window.location.href = 'https://reporting.globalpay.com/choose-language';
+  };
+
   const [teachers, setTeachers] = useState([]);
   const [students, setStudents] = useState([]);
   const [selectedStudentName, setSelectedStudentName] = useState(''); // State to hold the selected student's name
@@ -171,9 +177,7 @@ export default function MakePayments() {
         <Namebar />
       </div>
 
-      <div className='addnavbar'>
-        <Navbar />
-      </div>
+
 
       <div className='paymentformdiv'>
         <form id='payment-form' className='payment-form' onSubmit={formik.handleSubmit} onReset={handleFormReset}>
@@ -292,9 +296,10 @@ export default function MakePayments() {
 
 
           <div className='button-container'>
-            <button  type='submit' disabled={formik.isSubmitting}>
+            {/* <button  type='submit' disabled={formik.isSubmitting}>
               Make Payment
-            </button>
+            </button> */}
+            <button type='submit' disabled={formik.isSubmitting} >Pay Online</button>
             <button type='reset'>Reset</button>
           </div>
         </form>
