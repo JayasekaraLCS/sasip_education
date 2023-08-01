@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
@@ -36,6 +37,7 @@ import NotPaymentsDetails from './Pages/NotPaymentsDetails';
 
 
 function App() {
+
   return (
     <div>
       <BrowserRouter>
@@ -67,14 +69,6 @@ function App() {
           <Route path = '/ResultsReport'  element = {<ResultsReport/>} />
           <Route path = '/AttendanceReport' element = {<AttendanceReport/>} />
           <Route path = '/NotPaymentsDetails' element = {<NotPaymentsDetails/>} />
-          
-          
-          
-          
-          
-
-          
-
         </Routes>
 
       </BrowserRouter>
@@ -90,15 +84,7 @@ function App() {
 
 
      
-      {/* <Navbar/> */}
-      {/* <Namebar/> */}
-      {/* <Status/> */}
-      {/* <PageSetup/> */}
-      {/* <Example/> */}
-      {/* <NoPage/> */}
-      {/* <AddResults/> */}
-      {/* <TeacherRegistrationPage/> */}
-      
+
     </div>
   );
 }
