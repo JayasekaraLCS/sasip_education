@@ -33,6 +33,7 @@ import MakeOnlinePayments from './Pages/MakeOnlinePayments';
 import ResultsReport from './Pages/ResultsReport';
 import AttendanceReport from './Pages/AttendanceReport';
 import NotPaymentsDetails from './Pages/NotPaymentsDetails';
+import ResultReportTeacher from './Pages/ResultReportTeacher';
 
 
 
@@ -69,6 +70,7 @@ function App() {
           <Route path = '/ResultsReport'  element = {<ResultsReport/>} />
           <Route path = '/AttendanceReport' element = {<AttendanceReport/>} />
           <Route path = '/NotPaymentsDetails' element = {<NotPaymentsDetails/>} />
+          <Route path = '/ResultReportTeacher' element = {<ResultReportTeacher/>} />
         </Routes>
 
       </BrowserRouter>

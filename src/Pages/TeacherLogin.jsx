@@ -22,7 +22,7 @@ export default function TeacherLogin() {
           <button className="button">Check Results</button>
         </Link>
 
-        <Link to = '/GenerateReports'>
+        <Link to = '/ResultReportTeacher'>
           <button className="button">Generate Reports</button>
         </Link>
 
