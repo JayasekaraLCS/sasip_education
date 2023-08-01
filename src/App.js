@@ -31,6 +31,7 @@ import ViewTeacherProfile from './Pages/ViewTeacherProfile';
 import MakeOnlinePayments from './Pages/MakeOnlinePayments';
 import ResultsReport from './Pages/ResultsReport';
 import AttendanceReport from './Pages/AttendanceReport';
+import NotPaymentsDetails from './Pages/NotPaymentsDetails';
 
 
 
@@ -65,6 +66,7 @@ function App() {
           <Route path = '/MakeOnlinePayments' element = {<MakeOnlinePayments/>} />
           <Route path = '/ResultsReport'  element = {<ResultsReport/>} />
           <Route path = '/AttendanceReport' element = {<AttendanceReport/>} />
+          <Route path = '/NotPaymentsDetails' element = {<NotPaymentsDetails/>} />
           
           
           
