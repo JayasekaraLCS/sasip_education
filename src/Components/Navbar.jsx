@@ -23,6 +23,7 @@ export default function Navbar() {
                     <div className="dropdown-content">
                         <Link to="/MakePayments">Make Payments</Link>
                         <Link to="/CheckPayments">Check Payments</Link>
+                        <Link to = "/NotPaymentsDetails">Students not paid</Link>
                     </div>
                 </li>
 
