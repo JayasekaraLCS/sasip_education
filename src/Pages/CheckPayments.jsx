@@ -101,6 +101,8 @@ export default function CheckPayments() {
               </div>
             </th>
 
+            <th>Date</th> {/* Add a new column for the date */}
+
             <th>Paid Class 
             <div>
               <input
@@ -126,6 +128,8 @@ export default function CheckPayments() {
               </div>
             </th>
 
+            
+
           </tr>
         </thead>
         <tbody>
@@ -135,6 +139,7 @@ export default function CheckPayments() {
               <td>{payment.studentName}</td>
               <td>{payment.grade}</td>
               <td>{payment.month}</td>
+              <td>{new Date(payment.date).toLocaleDateString()}</td> {/* Display the date in a human-readable format */}
               <td>{payment.paidClass}</td>
               <td>{payment.classFees}</td>
             </tr>

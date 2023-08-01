@@ -95,7 +95,6 @@ export default function ViewStudents() {
                 onChange={handleFilterChange}
                 />
             </th>
-            <th>Image</th>
             <th>Classes Attend</th>
             <th>Parent Name
                     <input
@@ -117,6 +116,7 @@ export default function ViewStudents() {
                 />
             </th>
             <th>Parent Phone</th>
+            <th>Image</th>
           </tr>
         </thead>
         <tbody>
@@ -129,7 +129,6 @@ export default function ViewStudents() {
               <td>{student.studentaddress}</td>
               <td>{student.studentphone}</td>
               <td>{student.grade}</td>
-              <td>{student.studentimage}</td>
               <td>
                     {student.classesAttend.map((teacher) => (
                     <div key={teacher._id}>
@@ -141,6 +140,7 @@ export default function ViewStudents() {
               <td>{student.parentaddress}</td>
               <td>{student.parentnic}</td>
               <td>{student.parentphone}</td>
+              <td>{student.studentimage}</td>
             </tr>
           ))}
         </tbody>

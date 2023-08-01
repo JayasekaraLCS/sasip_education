@@ -13,6 +13,7 @@ export default function MakePayments() {
   const [students, setStudents] = useState([]);
   const [selectedStudentName, setSelectedStudentName] = useState(''); // State to hold the selected student's name
   const [selectedStudentGrade, setSelectedStudentGrade] = useState(''); // State to hold the selected student's grade
+  const [selectedClassFee, setSelectedClassFee] = useState(''); // State to hold the selected class fees
   
 
   useEffect(() => {
@@ -58,8 +59,6 @@ export default function MakePayments() {
     // Class Fees validation
     if (!values.classFees) {
       errors.classFees = 'Class Fees is required';
-    } else if (isNaN(values.classFees) || values.classFees < 1000 || values.classFees > 2500) {
-      errors.classFees = 'Class Fees must be between 1000.00 LKR and 2500.00 LKR';
     }
 
     return errors;
@@ -145,6 +144,27 @@ export default function MakePayments() {
     formik.setFieldValue('studentId', selectedStudentId);
   };
 
+
+  const handleClassAttendChange = (event) => {
+    const selectedClass = event.target.value;
+
+    // Find the teacher with the selected class from the list of teachers
+    const selectedTeacher = teachers.find(
+      (teacher) =>
+        `${teacher.teachersubject} - ${teacher.teacherfirstname} ${teacher.teacherlastname}` === selectedClass
+    );
+
+    console.log(selectedTeacher)
+
+    // Set the selected class's fee in the state variable
+    setSelectedClassFee(selectedTeacher ? selectedTeacher.feeOfClass : '');
+    // Set the selected class in formik state
+    formik.setFieldValue('paidClass', selectedClass);
+    // Set the class fee in formik state
+    formik.setFieldValue('classFees', selectedTeacher ? selectedTeacher.feeOfClass : '');
+  };
+
+
   return (
     <div className='backgroundstreg'>
       <div className='addnamebar'>
@@ -228,20 +248,28 @@ export default function MakePayments() {
           </div>
 
           <div className='form-row'>
-              <label htmlFor='paidclass'>Class Attend:</label>
-              <select id='paidclass' name='paidClass' {...formik.getFieldProps('paidClass')}>
-                <option value='' disabled>
-                  Select the class
+            <label htmlFor='paidclass'>Class Attend:</label>
+            <select
+              id='paidclass'
+              name='paidClass'
+              value={formik.values.paidClass}
+              onChange={handleClassAttendChange} // Call the handleClassAttendChange function on change
+            >
+              <option value='' disabled>
+                Select the class
+              </option>
+              {teachers.map((teacher) => (
+                <option
+                  key={teacher._id}
+                  value={`${teacher.teachersubject} - ${teacher.teacherfirstname} ${teacher.teacherlastname}`}
+                >
+                  {`${teacher.teachersubject} - ${teacher.teacherfirstname} ${teacher.teacherlastname}`}
                 </option>
-                {teachers.map((teacher) => (
-                  <option key={teacher._id} value={`${teacher.teachersubject} - ${teacher.teacherfirstname} ${teacher.teacherlastname}`}>
-                    {`${teacher.teachersubject} - ${teacher.teacherfirstname} ${teacher.teacherlastname}`}
-                  </option>
-                ))}
-              </select>
-              {formik.touched.paidClass && formik.errors.paidClass && (
-                <div className='error-message'>{formik.errors.paidClass}</div>
-              )}
+              ))}
+            </select>
+            {formik.touched.paidClass && formik.errors.paidClass && (
+              <div className='error-message'>{formik.errors.paidClass}</div>
+            )}
           </div>
 
           <div className='form-row'>
@@ -250,12 +278,18 @@ export default function MakePayments() {
               type='text'
               id='class-fees'
               name='classFees'
-              {...formik.getFieldProps('classFees')}
+              // {...formik.getFieldProps('classFees')}
+              value={selectedClassFee} // Set the value to the selected class's fee
+              readOnly // Make it read-only to prevent user input
             />
             {formik.touched.classFees && formik.errors.classFees && (
               <div className='error-message'>{formik.errors.classFees}</div>
             )}
-          </div>
+        </div>
+
+
+
+
 
           <div className='button-container'>
             <button  type='submit' disabled={formik.isSubmitting}>

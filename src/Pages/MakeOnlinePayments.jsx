@@ -8,10 +8,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function MakePayments() {
+
   const [teachers, setTeachers] = useState([]);
   const [students, setStudents] = useState([]);
-  const [selectedStudentName, setSelectedStudentName] = useState('');
-  const [selectedStudentGrade, setSelectedStudentGrade] = useState('');
+  const [selectedStudentName, setSelectedStudentName] = useState(''); // State to hold the selected student's name
+  const [selectedStudentGrade, setSelectedStudentGrade] = useState(''); // State to hold the selected student's grade
+  const [selectedClassFee, setSelectedClassFee] = useState(''); // State to hold the selected class fees
+  
 
   useEffect(() => {
     fetch('http://localhost:3001/newteachers')
@@ -19,10 +22,11 @@ export default function MakePayments() {
       .then((data) => setTeachers(data))
       .catch((error) => console.error('Error fetching teachers data:', error));
 
-    fetch('http://localhost:3001/newstudents')
+      fetch('http://localhost:3001/newstudents')
       .then((response) => response.json())
       .then((data) => setStudents(data))
       .catch((error) => console.error('Error fetching students data:', error));
+      
   }, []);
 
   const initialValues = {
@@ -32,90 +36,71 @@ export default function MakePayments() {
     month: '',
     paidClass: '',
     classFees: '',
-    cardNumber: '',
-    expiryMonth: '',
-    expiryYear: '',
-    cardholderName: '',
-    securityCode: '',
   };
 
   const validate = (values) => {
     const errors = {};
 
+    // Student ID validation
     if (!values.studentId) {
       errors.studentId = 'Student ID is required';
-    }
+    } 
 
+    // Month validation
     if (!values.month) {
       errors.month = 'Month is required';
     }
 
+    // Paid Class validation
     if (!values.paidClass) {
       errors.paidClass = 'Class Attend is required';
     }
 
+    // Class Fees validation
     if (!values.classFees) {
       errors.classFees = 'Class Fees is required';
-    } else if (isNaN(values.classFees) || values.classFees < 1000 || values.classFees > 2500) {
-      errors.classFees = 'Class Fees must be between 1000.00 LKR and 2500.00 LKR';
-    }
-
-    if (!values.cardNumber) {
-      errors.cardNumber = 'Card Number is required';
-    }
-
-    if (!values.expiryMonth) {
-      errors.expiryMonth = 'Expiry Month is required';
-    }
-
-    if (!values.expiryYear) {
-      errors.expiryYear = 'Expiry Year is required';
-    }
-
-    if (!values.cardholderName) {
-      errors.cardholderName = 'Cardholder Name is required';
-    }
-
-    if (!values.securityCode) {
-      errors.securityCode = 'Security Code is required';
     }
 
     return errors;
   };
 
   const handleSubmit = (values, { setSubmitting }) => {
+    // Prepare the data to be saved to the database
     const paymentData = {
       studentId: values.studentId,
-      studentName: selectedStudentName,
-      grade: selectedStudentGrade,
+      studentName: selectedStudentName, // Use the selectedStudentName from the state
+      grade: selectedStudentGrade, // Use the selectedStudentGrade from the state
       month: values.month,
       paidClass: values.paidClass,
       classFees: values.classFees,
-    //   cardNumber: values.cardNumber,
-    //   expiryMonth: values.expiryMonth,
-    //   expiryYear: values.expiryYear,
-    //   cardholderName: values.cardholderName,
-    //   securityCode: values.securityCode,
     };
 
+    console.log(paymentData)
+  
     axios
       .post('http://localhost:3001/payments-email', paymentData)
       .then((response) => {
         console.log(response.data);
         setSubmitting(false);
+        // Handle success, display a success message or redirect to another page
+
         toast.success('Payment successfully made!', {
           position: 'top-right',
-          autoClose: 500,
+          autoClose: 500, // Show the toast for 0.5 seconds
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
         });
+        // Handle success, display a success message or redirect to another page
+
       })
       .catch((error) => {
         console.error('Error submitting payment:', error);
         setSubmitting(false);
+        // Handle error, display an error message, or handle accordingly
+
         toast.error('Error submitting payment. Please try again.', {
           position: 'top-right',
           autoClose: 500,
@@ -125,6 +110,8 @@ export default function MakePayments() {
           draggable: true,
           progress: undefined,
         });
+        // Handle error, display an error message, or handle accordingly
+
       });
   };
 
@@ -135,16 +122,48 @@ export default function MakePayments() {
   });
 
   const handleFormReset = () => {
-    formik.resetForm();
+    formik.resetForm(); // Add this line to reset the form values
   };
+
+  useEffect(() => {
+    console.log(formik.errors)
+  
+   
+  })
+  
+
 
   const handleStudentIdChange = (event) => {
     const selectedStudentId = event.target.value;
+    // Find the student with the selected ID from the list of students
     const selectedStudent = students.find((student) => student.studentID === selectedStudentId);
+    // Set the selected student's name in the state variable
     setSelectedStudentName(selectedStudent ? selectedStudent.studentname : '');
     setSelectedStudentGrade(selectedStudent ? selectedStudent.grade : '');
+    // Set the selected student ID in formik state
     formik.setFieldValue('studentId', selectedStudentId);
   };
+
+
+  const handleClassAttendChange = (event) => {
+    const selectedClass = event.target.value;
+
+    // Find the teacher with the selected class from the list of teachers
+    const selectedTeacher = teachers.find(
+      (teacher) =>
+        `${teacher.teachersubject} - ${teacher.teacherfirstname} ${teacher.teacherlastname}` === selectedClass
+    );
+
+    console.log(selectedTeacher)
+
+    // Set the selected class's fee in the state variable
+    setSelectedClassFee(selectedTeacher ? selectedTeacher.feeOfClass : '');
+    // Set the selected class in formik state
+    formik.setFieldValue('paidClass', selectedClass);
+    // Set the class fee in formik state
+    formik.setFieldValue('classFees', selectedTeacher ? selectedTeacher.feeOfClass : '');
+  };
+
 
   return (
     <div className='backgroundstreg'>
@@ -153,7 +172,7 @@ export default function MakePayments() {
       </div>
 
       <div className='addnavbar'>
-        {/* <Navbar /> */}
+        <Navbar />
       </div>
 
       <div className='paymentformdiv'>
@@ -161,26 +180,26 @@ export default function MakePayments() {
           <h2>Make Payments</h2>
 
           <div className='form-row'>
-            <label htmlFor='student-id'>Student ID:</label>
-            <select
-              id='student-id'
-              name='studentId'
-              value={formik.values.studentId}
-              onChange={handleStudentIdChange}
-            >
-              <option value='' disabled>
-                Select the Student ID
-              </option>
-              {students.map((student) => (
-                <option key={student._id} value={student.studentID}>
-                  {student.studentID}
-                </option>
-              ))}
-            </select>
-            {formik.touched.studentId && formik.errors.studentId && (
-              <div className='error-message'>{formik.errors.studentId}</div>
-            )}
-          </div>
+        <label htmlFor='student-id'>Student ID:</label>
+        <select
+          id='student-id'
+          name='studentId'
+          value={formik.values.studentId}
+          onChange={handleStudentIdChange} // Call the handleStudentIdChange function on change
+        >
+          <option value='' disabled>
+            Select the Student ID
+          </option>
+          {students.map((student) => (
+            <option key={student._id} value={student.studentID}>
+              {student.studentID}
+            </option>
+          ))}
+        </select>
+        {formik.touched.studentId && formik.errors.studentId && (
+          <div className='error-message'>{formik.errors.studentId}</div>
+        )}
+      </div>
 
           <div className='form-row'>
             <label htmlFor='student-name'>Student Name:</label>
@@ -188,8 +207,8 @@ export default function MakePayments() {
               type='text'
               id='student-name'
               name='studentName'
-              value={selectedStudentName}
-              readOnly
+              value={selectedStudentName} // Set the value to the selected student's name
+              readOnly // Make it read-only to prevent user input
             />
           </div>
 
@@ -199,8 +218,8 @@ export default function MakePayments() {
               type='text'
               id='student-grade'
               name='studentGrade'
-              value={selectedStudentGrade}
-              readOnly
+              value={selectedStudentGrade} // Set the value to the selected student's grade
+              readOnly // Make it read-only to prevent user input
             />
           </div>
 
@@ -230,12 +249,20 @@ export default function MakePayments() {
 
           <div className='form-row'>
             <label htmlFor='paidclass'>Class Attend:</label>
-            <select id='paidclass' name='paidClass' {...formik.getFieldProps('paidClass')}>
+            <select
+              id='paidclass'
+              name='paidClass'
+              value={formik.values.paidClass}
+              onChange={handleClassAttendChange} // Call the handleClassAttendChange function on change
+            >
               <option value='' disabled>
                 Select the class
               </option>
               {teachers.map((teacher) => (
-                <option key={teacher._id} value={`${teacher.teachersubject} - ${teacher.teacherfirstname} ${teacher.teacherlastname}`}>
+                <option
+                  key={teacher._id}
+                  value={`${teacher.teachersubject} - ${teacher.teacherfirstname} ${teacher.teacherlastname}`}
+                >
                   {`${teacher.teachersubject} - ${teacher.teacherfirstname} ${teacher.teacherlastname}`}
                 </option>
               ))}
@@ -251,90 +278,28 @@ export default function MakePayments() {
               type='text'
               id='class-fees'
               name='classFees'
-              {...formik.getFieldProps('classFees')}
+              // {...formik.getFieldProps('classFees')}
+              value={selectedClassFee} // Set the value to the selected class's fee
+              readOnly // Make it read-only to prevent user input
             />
             {formik.touched.classFees && formik.errors.classFees && (
               <div className='error-message'>{formik.errors.classFees}</div>
             )}
-          </div>
+        </div>
 
-          {/* Payment Details */}
-          <div className='payment-details'>
-            <h3>Transaction Details(Secure Payments)</h3>
-            <div className='form-row'>
-              <label htmlFor='card-number'>Card Number:</label>
-              <input
-                type='number'
-                id='card-number'
-                name='cardNumber'
-                {...formik.getFieldProps('cardNumber')}
-              />
-              {formik.touched.cardNumber && formik.errors.cardNumber && (
-                <div className='error-message'>{formik.errors.cardNumber}</div>
-              )}
-            </div>
 
-            <div className='form-row'>
-              <label htmlFor='expiry-month'>Expiry Month:</label>
-              <input
-                type='number'
-                id='expiry-month'
-                name='expiryMonth'
-                {...formik.getFieldProps('expiryMonth')}
-              />
-              {formik.touched.expiryMonth && formik.errors.expiryMonth && (
-                <div className='error-message'>{formik.errors.expiryMonth}</div>
-              )}
-            </div>
 
-            <div className='form-row'>
-              <label htmlFor='expiry-year'>Expiry Year:</label>
-              <input
-                type='number'
-                id='expiry-year'
-                name='expiryYear'
-                {...formik.getFieldProps('expiryYear')}
-              />
-              {formik.touched.expiryYear && formik.errors.expiryYear && (
-                <div className='error-message'>{formik.errors.expiryYear}</div>
-              )}
-            </div>
 
-            <div className='form-row'>
-              <label htmlFor='cardholder-name'>Cardholder Name:</label>
-              <input
-                type='text'
-                id='cardholder-name'
-                name='cardholderName'
-                {...formik.getFieldProps('cardholderName')}
-              />
-              {formik.touched.cardholderName && formik.errors.cardholderName && (
-                <div className='error-message'>{formik.errors.cardholderName}</div>
-              )}
-            </div>
-
-            <div className='form-row'>
-              <label htmlFor='security-code'>Security Code:</label>
-              <input
-                type='number'
-                id='security-code'
-                name='securityCode'
-                {...formik.getFieldProps('securityCode')}
-              />
-              {formik.touched.securityCode && formik.errors.securityCode && (
-                <div className='error-message'>{formik.errors.securityCode}</div>
-              )}
-            </div>
-          </div>
 
           <div className='button-container'>
-            <button type='submit' disabled={formik.isSubmitting}>
+            <button  type='submit' disabled={formik.isSubmitting}>
               Make Payment
             </button>
             <button type='reset'>Reset</button>
           </div>
         </form>
 
+        {/* Add the ToastContainer to display the toasts */}
         <ToastContainer
           position='top-right'
           autoClose={3000}
@@ -346,6 +311,7 @@ export default function MakePayments() {
           draggable
           pauseOnHover
         />
+
       </div>
     </div>
   );

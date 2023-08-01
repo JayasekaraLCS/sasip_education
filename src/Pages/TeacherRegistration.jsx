@@ -97,10 +97,13 @@ export default function TeacherRegistration() {
       errors.teachersubject = 'Invalid Subject Name.';
     }
 
+    if(!values.feeOfClass){
+      errors.feeOfClass = 'Required';
+    } else if (isNaN(values.feeOfClass) || values.feeOfClass < 1000 || values.feeOfClass > 2500) {
+      errors.feeOfClass = 'Class Fees must be between 1000.00 LKR and 2500.00 LKR';
+    }
+
     
-
-
-
 
     return errors;
 
@@ -119,6 +122,8 @@ export default function TeacherRegistration() {
       teacherphone: '',
       teacherimage: '',
       teachersubject: '',
+      feeOfClass: ''
+
     },
 
     validate,
@@ -134,7 +139,8 @@ export default function TeacherRegistration() {
         nic: values.nic,
         teacherphone: values.teacherphone,
         teacherimage: values.teacherimage,
-        teachersubject: values.teachersubject
+        teachersubject: values.teachersubject,
+        feeOfClass : values.feeOfClass
       })
       .then((result) => {
         console.log(result);
@@ -251,6 +257,22 @@ export default function TeacherRegistration() {
                 <div>{formik.errors.teachersubject}</div>
               ) : null}
             </div>
+
+
+            <div className='form-row'>
+            <label htmlFor='fee-of-class'>Fee of the Class:</label>
+            <input
+              type='number'
+              id='feeOfClass'
+              name='feeOfClass'
+              placeholder='Enter the fee of the class'
+              onChange={formik.handleChange}
+              value={formik.values.feeOfClass}
+            />
+            {formik.touched.feeOfClass && formik.errors.feeOfClass ? (
+              <div>{formik.errors.feeOfClass}</div>
+            ) : null}
+          </div>
 
             
             <center>

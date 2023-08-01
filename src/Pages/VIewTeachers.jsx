@@ -105,7 +105,10 @@ export default function VIewTeachers() {
                     />
                 </th>
                 <th>Phone Number</th>
+                <th>Fee of Class</th>
                 <th>Image</th>
+                
+                
               </tr>
             </thead>
             <tbody>
@@ -118,7 +121,9 @@ export default function VIewTeachers() {
                   <td>{teacher.teacherpassword}</td>
                   <td>{teacher.nic}</td>
                   <td>{teacher.teacherphone}</td>
+                  <td>{teacher.feeOfClass}</td>
                   <td>{teacher.teacherimage}</td>
+                  
                 </tr>
               ))}
             </tbody>

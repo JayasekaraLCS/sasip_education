@@ -26,6 +26,7 @@ export default function Status() {
         <table>
           <tbody>
             <tr>
+            <td></td>
               <td>
                 <label htmlFor="Nostudents" className="label">
                   Students - {studentCount}
@@ -38,11 +39,7 @@ export default function Status() {
                 </label>
               </td>
               <td></td>
-              <td>
-                <label htmlFor="NoClasses" className="label">
-                  Classes - {teacherCount}
-                </label>
-              </td>
+
             </tr>
           </tbody>
         </table>

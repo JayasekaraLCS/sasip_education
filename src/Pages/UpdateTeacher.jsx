@@ -38,6 +38,7 @@ const UpdateTeacher = () => {
       nic: updatedTeacherData.nic,
       teacherphone: updatedTeacherData.teacherphone,
       teachersubject: updatedTeacherData.teachersubject,
+      feeOfClass: updatedTeacherData.feeOfClass
     };
   
     // Perform the update logic using axios.put
@@ -168,6 +169,17 @@ const UpdateTeacher = () => {
                   value={selectedTeacher.teachersubject}
                   onChange={(e) => setSelectedTeacher({ ...selectedTeacher, teachersubject: e.target.value })}
                   placeholder="Update Teaching Subject"
+                />
+              </div>
+
+              <div className="form-row">
+                <label htmlFor="fee-of-class">Fee of the Class:</label>
+                <input
+                  type="number"
+                  name="feeOfClass"
+                  value={selectedTeacher.feeOfClass}
+                  onChange={(e) => setSelectedTeacher({ ...selectedTeacher, feeOfClass: e.target.value })}
+                  placeholder="Update fee of the class"
                 />
               </div>
 

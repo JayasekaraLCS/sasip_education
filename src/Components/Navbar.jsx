@@ -27,7 +27,13 @@ export default function Navbar() {
                 </li>
 
 
-                <li className="dropdown"><Link to="/GenerateReports" className="dropbtn">Reports</Link></li>
+                <li className="dropdown"><Link to="/AdminPanel" className="dropbtn">Reports</Link>
+                    <div className="dropdown-content">
+                        <Link to="/ResultsReport">Result Report</Link>
+                        <Link to="/AttendanceReport">Attendance Report</Link>
+                    </div>
+                </li>
+
 
                 <li className="dropdown"><Link to="/AdminPanel" className="dropbtn">Attendance</Link>
                     <div className="dropdown-content">

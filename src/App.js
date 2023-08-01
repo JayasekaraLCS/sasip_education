@@ -10,7 +10,6 @@ import StudentRegistration from './Pages/StudentRegistration';
 import PageSetup from './Components/PageSetup';
 import TeacherRegistration from './Pages/TeacherRegistration';
 import MarkAttendance from './Pages/MarkAttendance';
-import Example from './Pages/Example';
 import MakePayments from './Pages/MakePayments';
 import CheckPayments from './Pages/CheckPayments';
 import CheckAttendance from './Pages/CheckAttendance';
@@ -30,14 +29,8 @@ import UpdateStudentPage from './Pages/UpdateStudentPage';
 import DeleteStudent from './Pages/DeleteStudent';
 import ViewTeacherProfile from './Pages/ViewTeacherProfile';
 import MakeOnlinePayments from './Pages/MakeOnlinePayments';
-
-
-
-
-
-
-
-
+import ResultsReport from './Pages/ResultsReport';
+import AttendanceReport from './Pages/AttendanceReport';
 
 
 
@@ -70,6 +63,8 @@ function App() {
           <Route path = '/DeleteStudent' element = {<DeleteStudent/>} />
           <Route path = '/ViewTeacherProfile' element = {<ViewTeacherProfile/>} />
           <Route path = '/MakeOnlinePayments' element = {<MakeOnlinePayments/>} />
+          <Route path = '/ResultsReport'  element = {<ResultsReport/>} />
+          <Route path = '/AttendanceReport' element = {<AttendanceReport/>} />
           
           
           
